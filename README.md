@@ -1,7 +1,12 @@
 # Topicos-de-Integracao-Web
 Estudos e projetos seguindo o curso de Web-Moderno da Cod3rs, incluindo os tópicos de HTML, CSS, manipulação de DOM e requisições Ajax (xmlHttpRequest, fetch, Axios e JQuery) com NodeJS. 
+Para acessar o site upado através do GitHub Pages: 
 O Github original da Cod3rs, com link para o curso:  https://github.com/cod3rcursos/web-moderno
 
+
+-Index Inicial
+    Esses estudos/projetos estarão sendo carregados através do Github Pages e, por tal, foi criado esse hub inicial para acessar os tópicos referentes dum único lugar, sem necessidade de inicializar manualmente cada um dos servers.js dos tópicos.
+    Caso realize a abertura deste projeto de maneira local, é prudente ignorar tal página e focar em cada um dos index.html presentes nos tópicos em "Tópicos de Integração Web" bem como inicializar os server.js referentes a cada um, se houver.
 
 -HTML
     Guias quanto as tags utilizadas e uso semântico bem como a construção de páginas não só com esse intuito, mas também com integração de JS para pequenas funcionalidades (como um slider básico de imagens ou manipulação dos elementos dum videoplayer por botões da página, através do JS). A página inicial desse documento é alimentada dinamicamente pelo conteúdo de outras páginas, porém algumas dessas páginas requerem abertura própria no navegador para que seu código possa funcionar. 
