@@ -55,7 +55,7 @@ app.post('/formulario', (req,res) => {
 })
 
 //axios2
-app.get('/parOuImpar', (req,resp)=>{
+app.get('/parOuImpar', (req,res)=>{
     //Formas de receber dados com o express
     //req.body - e devolverá tudo de /'parOuImpar' 
     //req.query - a partir da url de consulta com ?parametros de busca

@@ -25,9 +25,15 @@
         axios.get('parOuImpar', {
             //seria o options do fetch2
             params:{
-                numero:5 //o que vai ser avaliado
+                numero: 6 //o que vai ser avaliado
             }
         }).then(resp => exibirResultado('get', resp.data))
+
+                    //op
+        axios.post('formulario',{ //obj
+            nome:'AAAAna',
+            sobrenome:'Beatriz'
+        }).then(resp => exibirResultado('post', resp.data)) //resp
 
     </script>
 </body>
