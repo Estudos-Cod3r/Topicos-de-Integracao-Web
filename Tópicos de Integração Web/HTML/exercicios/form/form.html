@@ -1,0 +1,67 @@
+<h1>Formulário</h1>
+
+<!--Quando submeter o formulário ele vai pegar e inserir no local-->
+<!--Também dá pra usar GET - lembrando que os parâmetros do formulário vão aparecer na URL da aplicação, incluindo a senha inserida-->
+<!--Tem que fazer no js o get -->
+<!--<form method="GET">-->
+
+
+<!--<form action="http´://localhost:3003/usuarios" method="POST">-->
+    <form method="POST">
+    
+<!--<form method="POST"></form>-->
+<!--O valor desses inputs também pode ser alterado e atribuído via JS-->
+<!--O input escondido, ele carrega dados e não aparece ao usuário - dá pra guardar dados de um usuário/id para fazer alguma coisa - jeito antigo-->
+<!--Ele funciona na mesma vibe do VBA, com a célula de informações de lista ou afins escondida-->
+    <!--<input type="hidden" name="id" value = "3">-->
+    <input type="hidden" name="id" value="3">
+    <input type="text" name="nome">
+    <input type="password" name="senha">
+    <textarea name="bio" cols="30" rows="10"></textarea>
+    <div>                               <!--Esse value é o que de fato será enviado ao servidor-->
+        <input type="radio" name="tipo" value="admin"> Admin
+        <input type="radio" name="tipo" value="regular"> Regular 
+        <input type="radio" name="tipo" value="professor"> Professor
+    </div>
+
+    <div>
+        <input type="checkbox" name="ativo">Ativo
+        <select name="estado">
+            <option value="">Selecione</option>
+            <option value="ac">Acre</option>
+            <option value="ba">Bahia</option>
+            <option value="ce">Ceará</option>
+            <option value="pe">Pernambuco</option>
+            </select>
+
+            <select name="interesses" multiple size="6"> <!--Se com tamanho errado, ganhará scrollbar-->
+                <option value="js">Javascript</option>
+                <option value="java">Java</option>
+                <option value="php">PHP</option>
+                <option value="python">Python</option>
+                <option value="go">Go</option>
+                <option value="c">C</option>
+            </select>
+    </div>
+
+    <button formaction="http://localhost:3003/usuarios" >Incluir</button>
+    <button formaction="http://localhost:3003/usuarios/3" >Alterar</button>
+    <!--também existe formmethod pra ter um metodo pra cada botão-->
+    <!--<button formaction="http://localhost:3003/usuarios">Incluir</button>-->
+    <!--<button formaction="http://localhost:3003/usuarios/3">Alterar</button>-->
+
+</form>
+
+
+<style>
+    input, textarea,select
+    {
+        display: block; /*inline deixa na mesma linha, block separa por linha - sem necessidade do <br>*/
+        margin-bottom: 10px;
+    }
+    
+    input[type=radio],input[type=checkbox]
+    {
+        display: inline;
+    }
+</style>

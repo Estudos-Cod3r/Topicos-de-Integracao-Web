@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cores</title>
+    <style>
+        /* 
+            Cores com hexadecimal, rgb, rgba, hsl, hsla
+
+            Como funciona HSL (Hue, Saturation e Lightness)
+            https://www.w3schools.com/colors/colors_hsl.asp
+
+            Hue é o próprio espectro de cor, amplitude 0-360
+            Saturação irá de 0-100 (cinza a cor)
+            Luz - 0-100, do preto ao branco, com 50 sendo a cor 
+
+            https://coolors.co/ (Paletas)
+            http://paletton.com/ (Padrão de cor baseado no material, do google)
+            Também tem plugin no vscode pra trabalhar com cor 
+
+        */
+
+        body{
+            background-color: brown; /*ctrl+espaço abre o submenu de snippets*/
+            background-color: #f328f3; /*f3 28 f3 --dividido em 3 partes, com digitos indo de 0 a ff 0~* a b c d e f - 00+o preto ff+ a cor - funciona com r(ff) g(ff) b(ff)*/
+            background-color: #aabbcc; /*mesmo caractere em cada parte do trio aa bb cc -também pode ser só 3 caracteres (fica subentendido que tu tá replicando a letra) - abc*/
+            background-color: #abc; /*O mesmo que o acima*/
+            background-color: #edc12e80; /*A cor é ed|c1|2e, o 80 é a opacidade*/
+            background-color: #e928; /*mesmo que o de cima, com f sendo 100% da cor, 0 0% e o meio termo em incrementos de 10 (e925 - 50%)*/
+            
+            background-color: rgb(red, green, blue); /*0-255 em cada*/
+            background-color: rgba(red, green, blue, 0.5r); /*alpha vai de 0 a 1, sendo 0.5 = 50%*/
+
+            /*HSL*/
+            background-color: hsl(299, 58%, 50%);
+            background-color: hsla(125, 20%, 70%, 0.5);
+        }
+
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>

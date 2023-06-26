@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Display</title>
+    <style>
+        /* 
+            Tornar uma propriedade invísivel - usar display:none
+            Usar flexbos? Vai uso de display
+            Css grid, também vai display
+
+            Veremos block, inline e inline-block
+        */
+
+        body{
+            font-size: 40px;
+            color: white;
+            background-color: coral;
+
+        }
+
+        ul{
+            padding: 0;
+        }
+        
+        div{
+            background-color: seagreen;
+        }
+
+        span{
+            background-color: dodgerblue;
+        }
+
+        li{
+            background-color: purple;
+        }
+
+        div,span,li{
+            width: 50%; /*50% de toda sua largura diante do espaço do pai - somente aplicará a div e li, devido ao display*/
+            /*O pixel do CSS não é o mesmo do pc, mas sim um pixel padrão como base*/
+            width:200px; /*Continua não afetado*/
+            height: 80px; /*Sem afetar o span*/
+            padding-top: 30px; /*TOdos suportam*/
+            text-align: center; /*Não no span*/
+            /*O display padrão da div e ul, o do span é inline e o do li é list-item*/
+            display: block; /*Cada elemento terá sua própria linha - agora o span irá considerar largura e altura*/
+            display: inline; /*Os elementos aparecem na mesma linha, por quanto tiver espaço ou não quebra por outro elemento (como o ul)
+                                Deixa de considerar altura e largura*/
+            /*Interessante para criar card view: Foto do produto - descrição do mesmo, na mesma "linha"*/
+            /*Ou um menu de abas com links para outras páginas, usando lista ul -li, ficam na mesma linha de maneira fácil e com um link em cada li */
+            display: inline-block; /*Mantém a mesma linha, mas pega em consideração a altura e largura das coisas*/
+
+            /*Na index.html tem uma observação sobre o comportamente do inline-block*/
+        }
+
+    </style>
+</head>
+
+<body>
+    <div>Texto 1</div>
+    <span>Texto 2</span>
+    <span>Texto 3</span>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+</body>
+
+</html>

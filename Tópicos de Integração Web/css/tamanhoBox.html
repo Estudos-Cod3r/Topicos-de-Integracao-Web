@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tamanho Box</title>
+    <style>
+
+        *{
+            box-sizing: border-box; /*O seletor global aplicará a todos os elementos, indepepndente*/
+        }
+
+        body {
+            font-size: 45px;
+            margin: 0;
+            box-sizing: border-box; /*Essa propriedade não é transmitida por padrão, então não adianta só botar ela aqui pra todos elementos teres*/
+        }
+
+        div{
+            /*Tava embaixo*/
+            width: 600px;
+            /*O tamanho completo do conteúdo agora é 600 - contando com borda e padding*/
+            
+            background-color: deepskyblue;
+            width: 100%; /*Tamanho do conteúdo ocupará o body*/
+            height: 300px;
+            padding: 100px; /*Tamanho do padding*/
+            /*Largura total do elemento com padding: 200px a mais - é o que será coberto na % */
+            border: solid 20px;
+            /*O tamanho da borda também é somado*/
+            box-sizing: content-box; /*Comportamento padrão atual - o conteúdo é 100%*/
+            box-sizing: border-box; /*Conta como tamanho do elemento a borda, para o 100% permanecer na viewport (dentro do possível) - o padding+ borda=100% */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        O tamanho do Box é...
+    </div>
+</body>
+</html>

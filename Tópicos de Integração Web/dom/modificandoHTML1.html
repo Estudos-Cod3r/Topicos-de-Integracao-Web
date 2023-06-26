@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <script>
+        // iremos inserir elementos a partir do js
+        //Isso normalmente é feito pelo framework
+
+        const body = document.querySelector('body')
+        
+        const div1 = document.createElement('div')
+        div1.classList.add('destaque')
+        div1.innerHTML = "Primeiro"
+
+        const div2 = document.createElement('div')
+        div2.setAttribute('wm-atributo', 'valor')
+        div2.innerHTML = 'Segundo'
+
+        const p = document.createElement('p')
+        p.innerHTML = 'Terceiro'
+        const div3 =document.createElement('div')
+        div3.appendChild(p) //Adiciona como último elemento da lista ao novo pai
+
+        body.appendChild(div1)
+        body.appendChild(div2)
+        body.appendChild(div3)
+
+        const texto = document.createTextNode('Antes......') //Criando texto - poderia ser usado createElement
+        div3.insertBefore(texto, div3.childNodes[0]) //inserir o texto ANTES do primeiro(ou n) filho da div
+
+        //Clonando elementos
+        const div4 = div3.cloneNode(true) //Verifica se é uma clonagem PROFUNDA(deep)
+        //Se for, realizará a clonagem de tudo, incluindo de seus filhos
+        //se falso, não clonará os filho
+        body.appendChild(div4)
+
+        //Remover elemento
+        body.removeChild(div3)
+
+    </script>
+</body>
+
+</html>

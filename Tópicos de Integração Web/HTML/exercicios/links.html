@@ -1,0 +1,42 @@
+<h1 id="inicio">Links</h1>
+
+<!--URL ABSOLUTA-->
+<!-- PRECISA do http, senão ele acha que é url relativa e tenta acessar dentro das pastas locais-->
+<a href="https://www.google.com.br">Google na mesma janela</a> 
+<br>
+<a href="https://www.google.com.br/" target="_blank">Google em nova janela</a>
+
+<br>
+<br>
+
+<!-- URL RELATIVA -->
+<a href="index.html">Link para arquivo na pasta local deste arquivo</a> <!--Setentar acessar diretamente pela página de exercícios, não funcionará-->
+<br>
+<a href="/index.html">Acessando a pasta raíz (do servidor) - conteúdo estático</a>
+<br>
+<a href="../index.html">Volta e procura na pasta anterior</a>
+<!-- Também pode usar ../../../(...)/arquivo pra voltar quantas pastas forem necessárias-->
+<!--Não consegue voltar pra pasta anterior ao inicial do servidor - parando ali-->
+<br>
+<br>
+
+<!-- Mandar e-mail-->
+<a href="mailto:email@empresa.com">Entre em contato</a>
+<!-- no caso, abre o programa de e-mail-->
+<br>
+<br>
+<!-- CSS inline, não recomendado-->
+<!--div#noticia já cria a div com id noticia-->
+<div id="noticia" style="position:absolute; top:2000px">
+    <h1>Notícia Buemba</h1>
+    <p>TROOSLEI</p>
+    <a href="#inicio">Voltar Inicio</a>
+</div>
+<!--span.teste pra criar com classe-->
+<span class="teste">Teste de span.teste</span>
+<!--devido a posição absoluta, não faz diferença a ordem das coisas pra div, ela vai continuar na posição-->
+<a href="#noticia"> Ir para Notícia nessa página</a>
+<!-- #id lembrar da #antes do id, pra IR ao link-->
+
+
+<!--localhost:8080/exercicios/links.html#inicio após clicar - esse #inicio NÃO vai para o backend-->

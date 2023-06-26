@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <a href='https://www.cod3r.com.br'>Cod3r</a>
+    </div>
+    <div id='primeiro'>
+        <img src='http://files.cod3r.com.br/curso-web/logo-estreita.png' alt='logo'>
+    </div>
+    <script>
+        // ...
+
+        const img = document.querySelector('img') //img - tag, .img - classe, #img - id, [img] - atributo
+        
+        console.log('getAttribute: ',img.getAttribute('src') ) //Acessa o atributo source da img
+        console.log('src: ', img.src) //de maneira mais direta
+        //Normalmente o que temos armazenado para manipulação é uma string do atributo que queremos, então o getAttribute tem mais versatilidade
+        //Por isso a preferência invés do método "seco"
+        console.log('["src"]: ', img['src'])
+        console.log('alt: ', img.alt)
+
+        //Além de ter os atributos que estão explicitamente declarados dentro da tag (href, src, alt,etc), também há atributos que são implicítos (todos os elementos os tem) 
+        console.log('Elemento "img"...........')
+        console.log('NodeType: ', img.nodeType) //NodeType: 1 (elemento), 2(atributo), etc - ver mais: https://www.w3schools.com/jsref/prop_node_nodetype.asp
+        console.log('NodeName', img.nodeName) //Acessa o NOME do elemento 
+
+        const src = img.getAttributeNode('src') //Pegamos o VALOR daquele atributo
+        console.log('Atributo "src"..........', src) //obj src
+        console.log('NodeType: ', src.nodeType)
+        console.log('NodeName: ', src.nodeName)
+        console.log('NodeValue: ', src.nodeValue) //outra maneira de pegar o valor
+
+        // **Curiosidade: propriedades conhecidas pelo browser tem tratamento diferente das criadas por você mesmo
+        const link = document.querySelector('a')
+        console.log('Elemento "a"..........')
+        console.log('href: ', link.href )
+        console.log('firstChild.nodeType: ', link.firstChild.nodeType) //Pegará o texto/label presente dentro do link, do tipo 3
+        link.firstChild.nodeValue = 'Novo Texto' //Possível alterar o valor dele, sendo estes valores textuais
+        link.innerHTML = 'Outro Texto' //innerHtml também acessar o valor do elemento, sendo a forma mais comum
+
+    </script>
+
+</body>
+
+</html>

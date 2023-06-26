@@ -1,0 +1,66 @@
+*{
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Pixel';
+    src: url('../fonts/Pixel.ttf');
+}
+
+[wm-flappy] {
+    position: relative;
+    border: 5px solid dodgerblue;
+    height: 700px;
+    width: 1200px;
+    margin:15px;
+    background-color: deepskyblue;
+    overflow: hidden;
+}
+
+.passaro {
+    position: absolute;
+    width: 60px;
+    left: calc(50% - 30px); /*50% menos metade do tamanho do passaro, para centralizar*/
+}
+
+
+/*Par de barreiras representa o conjunto de cima e baixo de cada obstáculo*/
+.par-de-barreiras {
+    position: absolute;
+    top: 0; /*Alinhado com o topo*/
+    height: 100%;
+    display: flex;
+    flex-direction: column; /*Organiza na vertical*/
+    justify-content: space-between; /*Espaço para o pássaro passar por*/
+}
+
+
+.barreira {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.barreira .borda{
+    height: 30px;
+    width: 130px;
+    background: linear-gradient(90deg, #639301, #A5E82E);
+    border: 2px solid black;
+}
+
+.barreira .corpo {
+    height: 150px;
+    width: 110px;
+    background: linear-gradient(90deg, #639301, #A5E82E);
+    border-left: 2px solid #000;
+    border-right: 2px solid #000;
+}
+
+.progresso{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: Pixel;
+    font-size: 70px;
+    z-index: 10;
+}

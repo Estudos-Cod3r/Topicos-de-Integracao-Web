@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Grid #02</title>
+    <style>
+        html,
+        body {
+            margin: 20px;
+            height: calc(100% - 40px);
+            background-color: lightgray;
+        }
+        
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            border: solid 5px dodgerblue;
+            background: #fff;
+        }
+
+        /*Começa aqui*/
+        body{
+            display: grid;
+            /*Lembrando que embora tenhamos 3 colunas, teremos 4 linhas divisórias entre essas colunas
+             - começo, segunda, terceira e final (sendo começo e final as "paredes")*/
+            grid-template-columns: 
+            [inicio] 1fr 
+            [metade-1 meio-1] 1fr 
+            [metade-2 meio-2] 1fr 
+            [fim];
+            /*[nomeColuna] sendo possível dar 2 ou mais nomes numa mesma atribuição para 1 coluna/linha com [nome1 nome2]*/
+            /*A coluna [fim] é a linha da parede nas divisões da coluna*/
+            grid-template-rows: repeat(3, 1fr); 
+            /*Teremos 9 células - e possível visualizar as vazias pelo mozila, com o inspetor*/   
+            
+            column-gap: 20px; /*Seria o antigo grid-column-gap - é o espaçamento entre colunas*/
+            row-gap: 20px;
+            /*Lembrando que esse espaço também existirá nas células unificadas por algum elemento, só que o conteúdo da mesma estará por cima*/
+            gap: 50px 10px; /*Shortcut: rows columns*/
+            gap: 10px; /*Em rows e columns*/
+        }
+
+        .d1{
+            grid-column-start: metade-2;
+            grid-column-end: fim;
+            /*Shortcut*/
+            grid-column: meio-1 / fim; /*A "/" é necessária*/
+            grid-row: 1 / span 2; /*começa em 1 e pega 2 casas*/
+
+            /*Shortcut para todas*/
+            /*grid-area: row-start column-start row-end column-end;*/
+            grid-area: 1 / meio-1 / span 3 / fim; /*1~span 3 e meio-1~fim*/
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="d1">1</div>
+    <div class="d2">2</div>
+    <div class="d3">3</div>
+</body>
+
+</html>

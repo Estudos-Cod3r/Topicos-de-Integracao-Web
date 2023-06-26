@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>  
+    <head>
+        <title>Um Pouco de Css   </title>
+        <style>
+            /*h1,span{
+                display:none /* desativa/some com os elementos*/
+            }*/
+            h1{
+                background-color: red;
+                /*posição absoluta em posição x a partir do topo e alimanhento a esquerda
+                position:absolute;
+                top: 400px;
+                left: 400px;;
+                */
+                font-size: 20p;
+            }
+
+            .fundoVermelho {
+                background-color: red; /* ou #ff0000 ou f00 pra não repetir mesmos valores*/
+                /*ou rgb(255,0,0)*/
+            }
+
+            .negrito {
+                font-weight: bold;
+            }
+
+            /*para representar ID no html, usar #*/
+            #textoPrincipal {
+                font-size: large;
+                font-weight: lighter;
+                background-color: lightslategrey;
+                margin-bottom: 50px; /*invés de usar <br>*/
+            }
+
+        </style>
+        <!--document.QuerySelector('.nomeClasse') no browser/node para selecionar a primeira instância com esse estilo-->
+        <!--QuerySelector(".nomeclsas") para retornar todas instãncias em lista-->
+    </head>
+    <body>
+        <h1>CSS</h1>
+        <!--Id é único na página inteira de CSS e pode ser usado para identificar o elemento-->
+        <!--Class é mais relacionado a estilos do CSS e pode ser repetido, usa-lo-->
+        <!--Um elemento(tag) pode ter mais de uma class aplicada a ele-->
+
+        <span id="textoPrincipal"> Texto 1</span><br> <!--Br é um jeito antigo de quebrar parágrafo-->
+        <span class="fundoVermelho negrito"> Texto 2</span> <!--Duas classes-->
+        <span class="fundoVermelho"> Texto 3</span>
+    </body>
+</html>

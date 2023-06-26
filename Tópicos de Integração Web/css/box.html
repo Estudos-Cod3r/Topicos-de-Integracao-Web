@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Box Model</title>
+    <style>
+        /*
+            O boxModel tá presente em todo (ou quase todo) o CSS - ele vê todos os elementos do html como uma caixa
+            A margin funciona para distanciamento entre o elemento e seus vizinhos
+            O padding atua como espaçamento entre o conteúdo e sua borda, de onde começa a margin em seguida
+             _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+            |   ___borda______________    |
+            |  |         Padding      |   |
+            |  |      __________      |   |
+            |  |     |_Conteudo_|     |   |
+            |  |__ __ __ __ __ __ __ _|   |
+            |           Margin            |
+            |_ _ _ _ _ _ _ _ _ _ _ _ _ _ _|
+
+            As duas propriedades podem ser utilizadas como:
+            padding: n; aplicando n a todos os lados
+            padding: n m; sendo n na vertical e m na horizontal;
+            padding: a b c d;  aplicando aos sentidos de maneira horária, com a c sendo verticais e b d horizonrais - a(cima), b(direita), c(baixo) d(esquerda)
+         */
+
+
+        body{
+            font-size: 80px;
+            margin: 0px; /*Tirar herança do browser*/
+            
+        }
+
+        .c1{
+            background-color: orange;
+        }
+
+        .c2{
+            background-color: skyblue;
+        }
+
+        .c3{
+            background-color: tomato;
+        }
+
+        div{
+            float:left; /*Faz com que os elementos caiam pra esquerda - cada div ficará alinhada - perde o conceito de block*/
+            padding-top: 100px;
+            padding: 10px 50px 100px 150px;
+            /*Lembrando que o padding é aplicado por cima do tamanho do elemento - e os números e letras tem tamanhos diferentes*/
+            padding: 100px 50px; /*Lembrando que pela ordem de desempate, aplicará o último processado*/
+            padding: 50px;
+            margin: 0px 20px;
+            border: solid 15px black;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="c1">1</div>
+    <div class="c2">2</div>
+    <div class="c3">3</div>
+</body>
+
+</html>

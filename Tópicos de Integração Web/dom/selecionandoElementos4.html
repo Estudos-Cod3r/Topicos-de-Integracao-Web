@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #04</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <p>Início</p>
+    </div>
+    <div>
+        <ul>
+            <li>Pedro</li>
+            <li>Ana</li>
+            <li>Bia</li>
+        </ul>
+    </div>
+    <div>
+        <p>Fim</p>
+    </div>
+    <script>
+        // ... Como navegar dentro da DOM (dentro da estrutura de árvore dela)
+        
+        //Rever prototype e adicionar coisas dentro das funções e objetos
+        function log(){
+             console.log(this) //Se fosse arrow function, apontaria para window
+        }
+
+        HTMLCollection.prototype.log = log
+        HTMLElement.prototype.log = log
+        NodeList.prototype.log = log
+        Node.prototype.log = log
+
+        const lista = document.querySelector('div ul')
+        lista.parentNode.log() //Acessa o pai da ul (a div)
+        lista.childNodes.log() //Filho do ul - textos e li´s - os textos são os espaços em branco entre os elementos html - tirando eles resolverá o problema (um dos metódos de)
+        
+        const primeiro = lista.firstChild
+        primeiro.log() //texto
+        primeiro.nextSibling.log() //O irmão em seguida dele
+
+        const ultimo = lista.lastChild //tipo texto, também
+        ultimo.log()
+        ultimo.previousSibling.log() //O irmão anterior a este elemento
+
+
+        //Sem textos/brancos
+        lista.children.log() //Vem somente os elementos html, mesmo, sem os epsaços em brancos (textos)
+        //Mas não vem como nodelist, e sim htmlcollection
+       
+        lista.firstElementChild.log() //O primeiro elemento DE FATO, a primeira tag definida dentro
+        lista.lastElementChild.log() //o ultimo
+
+        //É possível juntar esses elementos e procurar tudo
+        lista.parentNode.previousElementSibling.log() //A div do ínicio - anterior a da ul
+        lista.parentNode.nextElementSibling.log() //A div do final - posterior a da ul
+
+        document.querySelectorAll('div ul li').log() //Mais fácil ir diretamente do que ficar navegando pela árvore, se possível
+    </script>
+</body>
+
+</html>

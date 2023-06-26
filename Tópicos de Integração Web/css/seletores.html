@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Selectors</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        /*
+        Seletores
+        -Globais/Universal: aplica uma propriedade a todos os elementos. Usado com *
+        -Direto no elemento: pega e aplica em um elemento do html - Usado div, h1, body
+        -Classe: aqueles que são reusáveis e projetado para uso do css. .nome
+        -Id: Serve pra estilo e funcionalidades do html e js - uma forma de seleção com @nome
+        -Usar de atributos - ex: todos que tiverem o atributo hide ficarão invisíveis (att no caso é o wm-slider e afins)
+            -Preferível p/ trabalhar com JS
+            -Tem níveis de performance diferente: id>atributo e classe>atributo
+        -Pseudo-Classe com 2 pontos - nome:pseudoClass
+        -Pseudo-Elemento com 2 2 pontos - nome::pseudoElem
+        
+        Combinar seletores
+        -Irmãos/Parentes Adjacentes: div + p -> Irmãos do mesmo pai um em seguida do outro
+        -Parentes gerais: div ~ p ->  Irmãos do mesmo pai, mas não obrigatoriamente seguidos um do outro
+        ex: 
+        <nav> 
+            <div></div> 
+            <a> </a> 
+            <p></p> 
+        </nav>
+        div e a são adjacentes, a e p também - div e p são gerais
+        ou
+        <ol>
+            <li>Maria</li>
+            <li>João</li>
+            <li>Pedro</li>
+        </ol>
+        adjacentes: Maria e João, João e Pedro  |  Gerais: Maria e Pedro
+
+        -Filha: div > p -> Filho *direto*
+        No exemplo acima a tag <li> é filha direta de <ol> - tal qual as tags <div>, <a> e <p> são filhas de <nav> no primeiro
+        
+        -Descendente: div p -> O filho do filho - ou seja, do neto pra frente
+        
+        <nav>
+            <div> Filho direto de nav
+                <aside> Filho direto de div e descendente de nav
+                    <p></p> Filho direto de aside, descendente de div e de nav
+                </aside>
+            </div>
+        </nav>
+
+        Aplicar as mesmas propriedades em mais de um elemento css com o uso da vírgula
+        ex: div, a, p{aaaaaa} - aaaaaa será aplicado em todas
+        */
+
+        /*global
+        *{
+            color:#ff0;
+            background-color: #f77;
+        }
+        */
+        .tag{
+            color:antiquewhite;
+            color: black;
+        }
+
+        #aprovados{
+            /*id é com #*/
+            color: brown;
+            background-color: violet;
+        }
+
+        #aninhado > div{
+            /*Pegar o elemento div diretamente aninnhado com o id #aninhado*/
+            background-color: azure;
+            color: black;
+        }
+
+        #aninhado > section{
+            /*Não está como filho, então não pega*/
+            background-color: violet;
+        }
+        
+        #aninhado ~ section{
+            /*Pega descendente, então não pega*/
+            background-color: violet;
+        }
+
+        p + ul{
+            /*pega p e ul exatamente em seguida um do outro*/
+            background-color: slategray;
+        }
+
+        p + ol{
+            /*Não são adjacentes, não seleciona*/
+            background-color: black;
+            color: white;
+        }
+
+        p ~ ol{
+            /*Irmãos gerais*/
+            background-color: black;
+            color: white;
+        }
+
+        [feira]{ /*todos feira*/
+            background-color: brown;
+            color: white;
+        }
+
+        [feira=casa]{ /*somente feiras casa*/
+            background-color:greenyellow;
+        }
+        
+        [feira=escritorio]{ /*somente escritorio - que não tem*/
+            background-color: black;
+        }
+
+        [feira ~= escritorio]{ /* o ~ antes do = pega os valores que tem um espaço pós o escrito -> não funciona se a separação fosse por vírgulas*/ 
+            background-color: black;
+        }
+
+        [feira*=sa]{ /*toda feira que contenha caracteres sa*/
+            font-size: larger;
+        }
+
+        span:nth-child(1){
+            /*Pega o span do qual seja o primeiro filho de alguém - tirar label (pois ela sempre será a primeira filha, com o js atual)*/
+            font-weight: bolder;
+            background-color: blue;
+        }
+
+
+        section > :nth-child(even){ /*pega os filhos da section que sejam pares*/
+            background-color: chartreuse;
+        }
+
+        section,ul{
+            font-size: larger;
+            background-color: yellow;
+        }
+
+        section > span:nth-of-type(2){ /*O filho de section e o segundo que seja do tipo span - começa a contagem a partir do 1*/
+            background-color: tomato;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='tag'>
+        <div class='tag'>
+            <p class='tag'>1</p>
+            <ul class='tag' feira='casa'>
+                <li>Arroz</li>
+                <li>Feijão</li>
+            </ul>
+            <ul class='tag' feira='escritorio empresa'>
+                <li>Café</li>
+                <li>Água</li>
+            </ul>
+            <ol id='aprovados' class='tag'>
+                <li>Maria</li>
+                <li>Pedro</li>
+                <li>Ana</li>
+            </ol>
+            <div id='aninhado' class='tag'>
+                <div class="tag">
+                    <section class='tag nolabel'>
+                        <span class='tag'>1</span>
+                        <p class='tag'>2</p>
+                        <span class='tag'>3</span>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

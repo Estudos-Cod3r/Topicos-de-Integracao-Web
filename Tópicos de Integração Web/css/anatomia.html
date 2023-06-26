@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Anatomia CSS</title>
+    <style>
+
+
+        /*Propriedades CSS usam o dash-case*/
+        .seletor{
+            color:#444;
+            font-size: 30px;
+            text-align: center; /*pré-definido*/
+            /*Múltiplos valores numa propriedade -> shorthand property*/
+            border: solid 5px rgb(76, 76, 99);
+            /*alternancias*/
+            font-family: Helvetica, sans-serif, monospace; /*Troca para a próxima caso não tenha a primeira - também pode ocorrer caso a fonte esteja escrito errado k*/
+            /*Caso esteja escrito errado ele irá aplicar o default*/
+            width: calc(100% - 100px); /*Tem funções pré-definidas*/
+            background-color: rgb(182, 187, 195);
+        }
+
+        /*Usar pseudo-classe*/ /*Aplica para determinados estados*/
+        .seletor:hover { /*Aplicada somente quando o mouse passar por cima*/
+            background-color: aliceblue;
+        }
+
+        /*Pseudo-elemento*/
+        .seletor::first-letter{
+            color: blue;
+            font-weight: bold;
+            font-size: larger;
+
+        }
+
+
+        /*Padrões de nomenclatura:
+        Um que mantenha padrão de nomenclatura - se usar camelCase, usar somente ele
+        a mesma coisa para dash-case
+        Ou mudar somente para separar entre classes e subclasses
+        Lembrando que css é case sensitive para classes personalizadas
+        -DIV funciona
+        -.SeLeToR não
+        */
+    </style>
+</head>
+
+<body>
+    <div class="seletor">Conteúdo</div>
+</body>
+
+</html>

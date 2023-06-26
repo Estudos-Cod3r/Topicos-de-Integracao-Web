@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Unidades #02</title>
+    <style>
+        /*  Percentual
+            Como se comporta a largura dum objeto quando usado o percentual
+                Quando o elemento dentro do outro
+                Como essas propriedades se interligam
+        */
+
+        /*Por padrão uma div já tem a largura 100% - se preenchermos ela com algum conteúdo, automaticamente toda largura será preenchida com as cores do css, bordas e afins
+            Ela só não tem ALTURA por padrão, por isso a necessidade do conteúdo - ela assume seu tamanho (display block)*/
+
+        .fora {
+            position: relative; /*Se fosse static o comportamente seria outro - o .dentro não consideraria o tamanho do pai para o conteúdo no caso de ser absolute, atuaria da mesma maneira que o fixed atual*/
+            background-color: orange;
+            height: 400px;
+            width: 400px;
+            padding: 50px; /*se torna 500x500*/
+        }
+
+        .dentro {
+            background-color: mediumvioletred;
+            height: 100px;
+            width: 100%; /*Dizendo de maneira explicita o que já é do display block*/
+            position: static; /*Position padrão*/ /*Ocupará apenas o espaço reservado ao conteúdo*/
+            position: relative; /*Também ocupa a posição do conteúdo - 100% de largura = 100% do conteúdo*/
+            position: absolute; /*100% agora é em relação não só ao conteúdo, mas ao conteúdo+padding*/ /*Acontece overflow*/
+            /*Os anteriores são relacionados ao conteúdo+padding reservado do pai e ou do próprio elemento*/
+            position: fixed; /*Considera o tamanho do _viewport_ e não do conteúdo nem do padding nem do pai*/
+        }
+
+    </style>
+</head>
+<body>
+    <div class="fora">
+        <div class="dentro"></div>
+    </div>
+</body>
+</html>

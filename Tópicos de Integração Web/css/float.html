@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Float</title>
+    <style>
+
+        /* "Flutuar"
+            Recebe bastante ajuda do flexbox invés do float - existe float:clear para limpar floats anteriores (??)
+            Procurar por flexbox ou, ainda, usar CSSgrid - que é o padrão atua
+
+            O elemento flutua para uma direção e os próximos "invadem" esse espaço vazio, se não for dado o clear desta direção neles
+        */
+
+        body {
+            background-color: #222;
+        }
+
+        .c1 {
+            background-color: red;
+            float:right; /*Os outros elementos desconsideram a flutuação do elemento c1*/
+        }
+
+        .c2 {
+            background-color: green;
+            clear: right; /*Dessa forma ele passa a considerar o elemento c1, pulando uma linha*/
+            float:left; /*Ele estará flutuando na esquerda, uma linha abaixo - e os outros dois elementos o desconsiderarão, inclusive com c4 ficando atrás deste elemento*/
+        }
+        
+        .c3 {
+            background-color: blue;
+            clear: right; /*considerará somente o vermelho*/
+            clear: left; /*Agora também considerará o verde e pulará duas linhas*/
+            /*Também poderia ser aplicado com a propriedade both ou somente se utilizando de left, já que o elemento prévio dessa linha é o left e, pela div, ele está na mesma linha*/   
+        }
+
+        .c4 {
+            background-color: orange;
+            float: right; /*O elemento anterior já considera o que precisa*/
+        }
+
+        div{
+            height: 150px;
+            width: 150px;
+            /*Pequena curiosidade: se o displai fosse inline a div precisaria de conteúdo para aparecer, já que o inline ignora altura e largura*/
+            
+            /*Comentado para propósito de estudo*/
+            /*float:right; /*O primeiro elemento da div será o primeiro da direita, e o último será o último da esquerda (dir->esq)*/
+            /*float: left;*/
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="c1"></div>
+    <div class="c2"></div>
+    <div class="c3"></div>
+    <div class="c4"></div>
+</body>
+
+</html>

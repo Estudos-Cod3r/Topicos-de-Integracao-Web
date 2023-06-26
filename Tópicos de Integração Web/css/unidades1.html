@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Unidades #01</title>
+    <style>
+        /* 
+            Dimensões: 
+            -Absolutas
+                px
+                    A unidade mais usada em absoluto - 1 pixel do html não significa 1 pixel da tela/monitor, mas sim é um valor nomralizado
+                    em cima da densidade da tela (dpi kinda - o que chamam de dp ou dip)
+                cm
+                mm
+                m
+                polegadas
+                pt - 1/72 duma polegada
+                etc
+                
+            -Viewport (tamanho vísivel da página) - Unidade Relativa
+                vh (View Height)
+                vw (view width)
+                    Tanto vh quanto vw representam 1/100 (1 cem avos) da dimensão da viewport - 10vh significa 10% da altura da viewport e
+                    100vh representa 100%, a totalidade
+                vmin
+                vmax
+                    Eles representam, respectivamente, o menor e maior tamanho das dimensões da página, em relação ao tamanho dela: se a página estiver
+                    com altura maior que largura, o vmax será a altura e o vmin a largura - se o contrário for verdade, vmax será largura e vmin altura.
+                    Vmin - Menor dimensão. Vmax - maior dimensão.
+                    A medida funciona da mesma forma, com 1/100 sendo representado pela unidade, de 0 a 100
+            -Fonte
+                Pode ser usado tamanho absoluto na fonte (px, cm)
+                sp
+                    Scale Independent Pixel: escala conforme as preferências de acessibilidade do usuário
+                rem
+                em
+                    São fontes baseadas em tamanhos relativos. Rem é relativo ao raíz/principal da aplicação, enquanto em é baseado na tag pai.
+                    Funciona como uma multiplicação - se o tamanho na raíz é 14 sp, 1 rem será 14 sp e 2 rem serão 28sp - o mesmo vale para o em quando
+            
+            -Percentual (Caso especial)
+                Pode ser usado tanto pra uso em viewport quanto pra fonte. Pode fazer referência a tela (viewport), ao elemento pai, a considerar ou não padding, etc.
+        */
+
+        .unidades-absolutas {
+            position: absolute; /*Algumas propriedades do exemplo só funcionam com essa position (top e left) */
+            font-size: 40px;
+            padding: 20px;
+            border: solid 5px blue;
+            margin: 30px;
+            width: 4cm; /*Pouco usado*/
+            height: 20mm; /*Pouco usado*/
+            top: 150px; /*Distância do topo até a classe */
+            left: 200px;
+        }
+
+        .unidades-relativas {
+            position: absolute;
+            /*Nas configurações do browser é possível alterar o tamanho da fonte para acessibilidade e, por consequência, o tamanho usado em em e rem
+                Esse tamanho é possível de observar, em px, no inspetor do browser, quanto ficou*/
+            font-size: 4em; /*4x o tamanho da fonte decidido pelo pai*/
+            padding: 5%; /*O comportamente da % varia conforme o tipo de position - aumentar ou diminuir as dimensões/tamanho do browser impactam no tamanho percentual, em tempo real*/
+            border: solid 1vw red; /*1/100 da largura - aumentar ou diminuir a largura do browser impactará nesse tamanho, em tempo real*/
+            margin: .8%;
+            width: 20vw;
+            height: 15vh;
+            bottom: 5%;
+            right: 5%;
+
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="unidades-absolutas">Opa!</div>
+    <div class="unidades-relativas">Epa!</div>
+</body>
+
+</html>

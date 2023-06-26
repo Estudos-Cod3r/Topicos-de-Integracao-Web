@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio Card</title>
+    <style>
+        /* ... Solução do curso
+
+        .curso {
+            float: left;
+            /*display: inline-block; /*Efeito parecido com float:left nesse caso
+            font-family: Verdana, sans-serif;
+            vertical-align: top; /*Alinha elementos de maneira vertical - no caso é para lidar com o não carregamento duma imagem trazendo a box curso para o espaço errado
+            border: solid 1px #CCC;
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.3);
+            height: 300px;
+            width: 260px;
+            margin: 5px 20px;
+            padding: 5px;
+        }
+
+        .curso img{
+            width: 100%;
+            max-height: 50%;
+        }
+
+        .curso-info{
+            padding: 10px;
+            height: 90px;
+            overflow: hidden;
+        }
+
+        .curso-info h4{
+            font-size: 1.4em;
+            font-weight: 100;
+            margin: 0px;
+        }
+
+        .curso-preco{
+            float: right;
+            padding: 10px;
+
+        }
+
+        .preco-de{
+            text-decoration: line-through;
+            color: firebrick;
+        }
+
+        .preco-por{
+            color: green;
+            font-weight: bold;
+            font-size: 1.4em;
+        }
+        
+        */
+
+        /*Minha solução*/
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background-color: darkgray;
+            font-family: Verdana, sans-serif;
+            font-size: 1.1rem;
+            color: black;
+        }
+
+        .container{
+            background-color: white;
+        }
+
+        .curso{
+            display: inline-block;
+            vertical-align: top; /*Alinha elementos de maneira vertical - no caso é para lidar com o não carregamento duma imagem trazendo a box curso para o espaço errado*/
+            /*O alinhamento padrão é o baseline*/
+            background-color: white;
+            height: 300px;
+            width: 260px;
+            padding: 5px;
+            vertical-align: top;
+            margin: 10px;
+            border: solid 1px #CCC;
+            filter: drop-shadow(0 0 5px rgb(70, 70, 70));
+        }
+
+        .curso img{
+            max-height: 50%; /*Para imgs muito verticais*/
+            width: 100%;
+        }
+
+        .curso-info{
+            padding: 10px;
+            overflow: hidden;
+            height: 120px;
+        }
+
+        .curso-info p{
+            font-size: small;
+            font-weight: 400;
+        }
+
+        .curso-preco{
+            float: right;
+        }
+
+        .preco-de{
+            text-decoration: line-through;
+            font-size: small;
+            color: red;
+        }
+
+        .preco-por{
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: darkgreen;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Card</h1>
+
+    <h2>Objetivo</h2>
+    <img src="http://files.cod3r.com.br/curso-web/card.png" height="340" alt="Objetivo">
+
+    <h2>Resultado</h2>
+    <div class="container">
+        <div class="curso">
+            <img src="http://files.cod3r.com.br/curso-web/curso1.jpg" />
+            <div class="curso-info">
+                <h4>Docker: Ferramenta essencial para Desenvolvedores</h4>
+                <p>Prof. Fulano</p>
+            </div>
+            <div class="curso-preco">
+                <span class="preco-de">R$80,00</span>
+                <span class="preco-por">R$50,00</span>
+            </div>
+        </div>
+        <div class="curso">
+            <img src="http://files.cod3r.com.br/curso-web/curso2.jpg" />
+            <div class="curso-info">
+                <h4>Web Moderno com Javascript + Projetos</h4>
+                <p>Prof. Sicrano Filho</p>
+            </div>
+            <div class="curso-preco">
+                <span class="preco-de">R$80,00</span>
+                <span class="preco-por">R$50,00</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>

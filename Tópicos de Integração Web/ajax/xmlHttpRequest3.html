@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #03</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        // Mais info: https://www.w3schools.com/js/js_ajax_http.asp - request object properties para os status da onreadystatechange
+
+        function ajax(config){
+            const xhr = new XMLHttpRequest()
+            xhr.open(config.metodo, config.url, true)
+
+            //Chamado sempre que o status da requisição mudar
+            xhr.onreadystatechange = e => {
+                //Também é possível uma barra de progresso aqui
+                //Será parecido com a onload
+                if(xhr.readyState === 4){
+                    if(xhr.status === 200){
+                        config.sucesso(xhr.responseXML) //xml e não json, já passou por parse - manipulação lembrará uma dom
+                    } else if (xhr.status >= 400){
+                        config.erro({
+                            codigo: xhr.status,
+                            texto: xhr.statusText
+                        })
+                    }
+                }
+            }
+
+            xhr.send()
+        }
+
+
+        //Chamada
+        ajax({
+            url: "dados/estados.xml",
+            metodo: 'get',
+            sucesso(resposta){
+                console.log(resposta) //o responseXML devolverá um #document invés de texto puro
+                const estados = resposta.getElementsByTagName('estado') //devolve uma lista
+                
+                //html age como acumulador e estado age como uma espécie de tag //o html será uma junção de lis
+                //attribute é cada um dos atributos, nome devolve o nó do nome e value o valor
+                //vazio para inicializar, o segundo param de reduce
+                const itens = Array.from(estados).reduce( 
+                    (html, estado) => html + `<li>${estado.attributes.nome.value}</li>` , '' 
+                )
+                document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)
+            },
+            erro(e) {
+                const msg = document.createTextNode(`${e.codigo} : ${e.texto}`)
+                document.body.appendChild(msg)
+            }
+        })
+
+
+    </script>
+</body>

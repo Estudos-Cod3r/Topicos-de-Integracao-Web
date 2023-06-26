@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<!--
+
+    Padrão de projeto - criado por Cristopher Alexander (Design Pattern)
+    Padrão de web: Padrão Observer - JS é fortemente baseado nele (não só pelos eventos, mas também pelo ajax)
+    Operação assíncrona acontece e em determinado evento os observadores são invocados
+-->
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <div>              
+                <!--Vantagens do onClick diretamente na tag: fica explicito pra quem está lendo o código que o elemento está ligado à uma função js
+                    e qual a função que está sendo chamada.
+                Desvantagem: Hardcode no link com os eventos - perde a flexibilidade -->
+        <!--A chamada no html passa o parâmetro event mesmo - no caso, o evento é o próprio clique (mas pode ser qualquer evento que ocorra)-->
+                <!--onclick="navegarEm5s(event)"-->
+        <a href="https://google.com.br" espera-um-pouco>Google</a>
+                                <!--espera-um-pouco = "8" - poderíamos passar o próprio tempo de espera ou outra coisa por um atributo-->
+    </div>
+    <script>
+        // Interceptar clique e executar uma função
+        function navegarEm5s(e) { //(e) = evento
+            e.preventDefault()
+            console.log('Saindo em 5s')
+            setTimeout(()=>{ //target é o elemento html que disparou o evento
+                const link = e.target//é o própro link
+
+                //a ulr da janela
+                window.location.href = link.href //substitui a url pela do link
+            }, 5000)
+        }
+
+        const a = document.querySelector('a')
+        a.onclick = navegarEm5s //Não precisa passar o evento, já é passado automático no evento do clique
+        //Adiciona flexibilidade
+        //Mas perde a leitura a partir da tag de o que está acontecendo/qual função é atrelada/que o tag está sendo manipulado
+        //Mesmo com uma classe no html - perde o sentido por ela ser para estilo
+
+        //Usar atributos personalizados resolve esse problema
+        const a = document.querySelector('[espera-um-pouco]')
+        a.onclick = navegarEm5s //Quase como adicionando uma delegate/evento em c#
+        //Um atributo personalizado pressupõe que há código vinculado a ele, 
+        //pois não há comportamento padrão do browser/html para atributos personalizados
+
+
+
+    </script>
+</body>

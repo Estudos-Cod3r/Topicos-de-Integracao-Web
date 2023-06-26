@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Media Query</title>
+    <style>
+
+        /*
+        Frameworks como o Bootstrap já trazem o mediaQuery de uma forma mais pronta para uso
+        Executa aquilo dentro da media, o que não se encaixar não é -executado-
+        MediaQuery não é a única forma de conseguir responsavidade
+        */
+
+        div {
+            font-size: 40px;
+            margin: 20px;
+            padding: 20px;
+            background-color: coral;
+            border: solid 5px;
+            display: none;
+        }
+
+        /*Se a largura da tela for no máx 600px*/
+        @media (max-width: 600px) {
+            .muito-pequeno {
+                display: block;
+            }
+        }
+
+        /*Se a largura for até 1000px OU se a orientação da tela for retrato
+        (Neste caso, na retrato ele ficaria vísivel INDEPENDENTE do tamanho)
+        */
+        @media (max-width: 1000px), (orientation:portrait){ /*ou landscape*/
+            .pequeno-retrato {
+                 display: block;
+            }
+        }
+
+        @media (min-width: 500px) and (max-width: 1000px){
+            .intervalo{
+                display: block;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="muito-pequeno">Muito Pequeno</div>
+    <div class="pequeno-retrato">Pequeno ou Retrato</div>
+    <div class="intervalo">Intervalo</div>
+</body>
+</html>

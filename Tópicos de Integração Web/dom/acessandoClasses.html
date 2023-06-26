@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Classes</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        Classes
+    </div>
+    <script>
+        // ...
+        const div = document.querySelector('div')
+        const classes = div.classList //classes presentes na div
+        classes.add('destaque')
+        classes.remove('destaque')
+        
+        classes.toggle('destaque') //Se não existe ele adiciona, se existe ele remove
+        //Seria o mesmo que
+        //!classes.contains('destaque') ? classes.add('destaque') : classes.remove('destaque')
+
+        console.log(classes.contains('destaque'))
+        console.log(classes.length)
+        classes.toggle('destaque')
+        console.log(classes.length)
+
+        classes.add('destaque1')
+        classes.add('destaque2')
+        console.log(classes.length)
+        console.log(classes)
+
+        //A lista de classes tem um interator associado
+        //se usarmos dir(div.classList) retornará DOMTokenList - lista tem iterador 
+        for(let c of classes){
+            console.log(c)
+        }
+
+        //Também é possível o foreach nativo, sem transformar para array
+        classes.forEach(e => console.log(e))
+        //As outras funções é necessário transformar ele em array com array.from() ou [...classes]
+    </script>
+</body>
+
+</html>

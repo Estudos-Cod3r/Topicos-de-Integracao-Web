@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+h1{
+    margin: 15px;
+}
+
+.conteudo{
+    margin: 10px;
+}
+
+.tela{
+    display: flex;
+    position: relative;
+    height: 360px;
+    width: 620px;
+    background-color: rgb(133, 135, 194);
+    overflow: hidden;
+}
+
+.passaro{
+    position: relative;
+    background-image: url(../imgs/passaro.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 21px 30px;
+    margin:auto;
+    background-color: blue;
+    z-index: 1;
+}
+
+.cano{
+    position: absolute;
+    height: 220px;
+    width: 60px;
+    background-color: darkgreen;
+}
+
+

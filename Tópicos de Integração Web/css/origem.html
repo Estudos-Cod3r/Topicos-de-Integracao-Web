@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Origem CSS: Externo, Interno e Inline</title>
+    <style>
+        /*Aula para demonstrar como adicionar css no arquivo de maneira interna, externa e inline*/
+        /*A preferência pelos arquivos se dá por qual foi o último processado*/
+        /*Então como o externo está por último no código, ele quem terá preferência*/
+        /*Exceto por inline, que tem preferência*/
+        /*Também dá pra botar por JS*/
+
+        body{
+            background-color: aquamarine;
+        }
+    </style>
+
+    <!--Precisa do stylesheet - sempre no head-->
+    <link rel="stylesheet" href="css/externo.css">
+</head>
+
+<!--Não recomendado fora p/ testes-->
+<body style="background-color: seagreen;">
+    <h1>E agora?</h1>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<h1>Vídeo</h1>
+
+<!--    controls faz os controles de vídeo aparecer | autoplay pra já dar play | controlist pra definir quais controles-->
+<video id="meuVideo" width="800" height="450" controls autoplay controlsList = "nodownload"> <!-- src="http://"  poderia ser usado-->
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4"> <!--Mas essa tag trás mais flexibidade-->
+    <!--Tal qual com pictures, é possível encadear vários sources e, caso o primeiro não seja suportado pelo browser, ele irá para o próximo-->
+    Seu browser não suporta a tag vídeo
+</video>
+
+<!--Uso de atributos específicos invés de id´s ou classes?
+    Id é muito específico e classe é muito genérico
+    Permite atrelar códigos genéricos a coisas específicas e vice versa
+    Mais fácil conseguindo referenciar o vídeo, por exemplo, no próprio atributo - não se faz com id
+-->
+<div>
+    <button wm-play="meuVideo">
+        Play<!--Botão play personalizado-->
+    </button>
+    <button wm-pause="meuVideo">
+        Pause<!--Botão pause personalizado-->
+    </button>
+</div>  
+
+<!-- Associa o atributo ao video - cria id específico-->
+<div wm-progresso="meuVideo" class="progresso"> <!--Moldura do progresso-->
+    <div> <!--cor que preenche a moldura/máscara-->
+        <!--Aqui vão os valores-->
+    </div> <!--Poderia ser criada essa div interna com js-->
+</div>
+
+
+<script>
+    
+    function configurarVideo(id){
+        console.log('Dentro da função')
+        const video = document.getElementById(id)
+        video.oncontextmenu = () => false //on context menu é o menu do botão direito // deixa ele falso // impede download
+        
+        //pra pegar pelo atributo que tenha o id específico
+        document.querySelector(`[wm-play=${id}]`).onclick = e => video.play()
+        document.querySelector(`[wm-pause=${id}]`).onclick = e => video.pause()
+
+        const porcentagem = (video.currentTime / video.duration) * 100
+        const divProgress = document.querySelector(`[wm-progresso=${id}] div`)
+        divProgress.style.width = `${porcentagem}%`
+        divProgress.innerHTML = `${porcentagem.toFixed(0)}%`
+    }
+
+    setInterval(()=> configurarVideo('meuVideo'),100)
+    
+    //const tempoBuffer = 10
+    //const video = document.getElementById("meuVideo")
+    
+    //const bPlay =  document.querySelector('[wm-play]')
+    //bPlay.onlick = function (e){
+    //    video.play()
+    //}
+
+    //const bPause = document.querySelector('[wm-pause]')
+    //bPause.onClick = function (){
+    //    e.preventDefault()
+    //    console.log("pausa")
+    //}
+
+    //function progressBar(video, barra){
+    //    const largura = (video.duration / video.currentTime) * 100
+    //    barra.style.width = `${largura}%`
+    //}
+    //const barra = document.querySelector('[wm-progresso] div')
+    //setTimeout(progressBar(video,barra), tempoBuffer)
+
+
+</script>
+
+<style>
+    button{
+        margin:10px;
+        padding: 10px 15px;
+    }
+    .progresso{
+        height: 20px;
+        width: 500px;
+        border: solid 1px #444;
+        margin: 20px;
+    }
+
+    .progresso div{
+        background-color: red;
+        color: #fff;
+        height: 100%;
+        text-align: right;
+        font-size: 14px;
+        width: 0%; /*Aqui o preenchimento*/
+    }
+</style>

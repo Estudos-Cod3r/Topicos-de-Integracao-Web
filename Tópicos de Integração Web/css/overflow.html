@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Overflow</title>
+    <style>
+
+        /*
+            Quando um elemento passa/extrapola um por cima do outro temos a possibilidade de ditar como será lidado com isso - a exemplo, se usaremos o overflow
+        */
+
+        /* Diferença entre overflow e text-overflow:
+            A diferença entre essas propriedades é que a overflow determina se o elemento que extrapolou o container deve ser cortado, exibido com barras de rolagem ou se transborda do elemento. Já a propriedade text-overflow especifica como a parte visível do elemento que extrapolou deve ser exibida, se é para ser cortada (ação padrão), mostrar reticências ou até mesmo exibir qualquer string personalizada.
+        */
+        div {
+            font-size: 40px;
+            height: 100px;
+            width: 260px;
+            border: solid 3px;
+
+            overflow: hidden; /*Tudo que extrapolar o elemento será escondido e não irá aparecer*/
+            overflow: scroll; /*Cria um scroll dentro do elemento   para que todo o conteúdo possa ser visualizado*/
+            overflow-x: scroll; /*somente no eixo x*/
+            overflow-y: scroll; /*somente no eixo y*/
+
+            /*Pare termos o scroll vertical, com o conteúdo horizontal sem mosstrar:*/
+            overflow-y: scroll;
+            overflow-x: hidden;
+            /*O contrário também é possível*/
+
+            /*Propriedades visible/hidden, scroll, herdar, unset (herda se tiver pra herdar e faz normal se não tiver) e initial*/
+
+
+        }
+    </style>
+</head>
+<body>
+    <div>
+        TudoFuncionaMuitoBemEmCSS!!!
+        Texto muito grande para caber nessa div.
+        Já pensou qual será o comportamento padrão?
+    </div>
+</body>
+</html>

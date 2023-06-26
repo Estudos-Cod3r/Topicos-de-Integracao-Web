@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Altura e Largura</title>
+    <style>
+        /*Em suma: altura % somente faz diferença a depender do pai(parent) - isso é aplicado para todos os tamanhos relativos, na verdade(absolutos não, depende de display e afins)*/
+        /*add durante a aula*/
+        html{
+            height: 100%;
+        }
+
+            /* Porque o Body tem sua cor na viewport inteira, mesmo não ocupando-a?
+            R: Esse comportamento do browser aplicar o background de body em toda a viewport deve ser porque o body,
+                no que se refere ao que é exibido pelo navegador, é a parte principal de uma página, apesar de sua 
+                altura em si depender dos elementos que ele contém.
+                Tudo que será exibido no navegador, via de regra, deve estar em body, daí sua relevância na viewport.
+                 Head, apesar de também ser importante, geralmente contém informações que não são exibidas diretamente no navegador.
+            */
+        body {
+            font-size: 40px;
+            background-color: coral;
+            height: 100%; /*Add durante*/
+            margin:0;
+        }
+
+        div {
+            background-color: seagreen;
+        }
+
+        span {
+            background-color: dodgerblue;
+        }
+
+        span,div{
+            width: 50%;
+            height: 250px;
+            /*
+                Por padrão, o body (que é o container destes dois) NÃO ocupa a altura toda da página, então 
+                não tem como estes elementos ocuparem um espaço que possa deixar um "vão" na % total do 
+                tamanho do body em altura, somente largura - a não ser que o mesmo passe a ocupar um 
+                espaço maior que somente o tamanho de seus filhos (por ex com tamanho fixo)
+                Dito isso, o body somente ocupa o todo que o html ocupa - e o html somente ocupa o mesmo
+                tamanho que o body - caso seja usada a % no body
+            */
+            height: 50%; /*Lembrando que não altera o span inline*/
+            display: block; /*agora ambos*/
+            /*O position também interfere com essas propriedades*/
+            
+            display:inline-block; 
+            /*Com o div e o span tendo um espaço em branco, nada será alterado com esse inline block*/
+        }
+    </style>
+</head>
+
+<body>
+    <div>Título</div>
+    <span>Subtítulo</span>
+    <div>Título</div><span>Subtítulo</span>
+</body>
+
+</html>

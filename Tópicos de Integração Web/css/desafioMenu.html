@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio Menu</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        /* ... Também tem JS no final */
+        /*
+            Utilização de mediaquerys para que no maior apareça o menu + login, no médio, somente menu e, no menor, somente o menu toggle
+        */
+
+        /*Utilizar com media querys - ideia de menu disponível somente ao mobile*/
+
+        /*Resolução da aula*/
+        * {
+            box-sizing: border-box;
+        }
+        
+        /*
+        body {
+            background-color: darkgray;
+            margin: 0px;
+            font-family: 'Oswald', sans-serif;
+        }
+        .cabecalho {
+            background-color: rgb(34, 34, 34);
+            border-bottom: 5px solid #4fabdd;
+            height: 80px;
+            box-sizing: content-order;  
+        }
+
+        .logo{
+            display:inline-block;
+            height: 80px;
+            padding: 15px;
+        }
+
+        .logo img {
+            height: 100%; /*Se limita ao tamanho disponível
+        }
+
+        .menu-toggle{
+            float: right;
+            color: #eee;
+            background-color: #555;
+            border: solid 1px #777;
+            border-radius: 5px;
+            height: 40px;
+            padding: 10px 20px;
+            margin: 20px 15px;
+        }
+
+        .menu{
+            display: inline-block;
+            vertical-align: top;
+            height: 80px; /*Mantém altura do cabeçalho
+            padding: 25px; /*lembrando que por causa do box-sizing border box a altura 80 será considerando o padding de 25px dentro
+        }
+
+        .menu ul{
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu li{
+            display: inline-block;
+        }
+
+        .cabecalho a{
+            text-decoration: none;
+            color: #eee;
+            font-size: 1.3em;
+        }
+
+        .menu a{
+            padding: 15px;
+        }
+
+        .menu a:hover,
+         menu a.selected {
+            background-color: #4fabdd;
+            color: #000;
+        }
+
+        .autenticacao{
+            float: right;
+            height: 80px;
+            padding: 25px;
+        }
+
+        /*.autenticacao a{
+            não necessário pelo "cabeçalho a"
+        }
+
+        .botao{
+            border-radius: 30px;
+            padding: 10px 20px;
+            margin: 10px;
+        }
+
+        .destaque {
+            background-color: #f50a31;
+            color: #fff;
+        }
+
+        @media(min-width: 679px){
+            .menu-toggle{
+                display: none;
+            }
+        }
+
+        @media (max-width:680px){
+            .menu{
+                display: none;
+            }
+        }
+
+        @media (max-width: 910px){
+            .autenticacao{
+                display: none;
+            }
+        }
+        */
+
+        
+        body {
+            background-color: darkgray;
+            margin: 0px;
+
+            /*font-family: 'Oswald', sans-serif;*/
+        }
+
+        a{
+            text-decoration: none;
+            color: white;
+        }
+/*
+        ul {
+            list-style-type: none;
+        }*/
+
+
+        .cabecalho {
+            position: relative;
+            background-color: rgb(34, 34, 34);
+            padding: 0px 10px;
+            border-bottom: 5px solid darkslategrey;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .cabecalho::after{
+            background-color: violet;
+            height: 10px;
+        }
+
+        .menu ul {
+            margin-left: 10px;
+        }
+        .menu li {
+            display: inline-block;
+            margin: 10px;
+        }
+        .menu a{
+            
+            padding: 16px 24px;
+        }
+        .menu a:hover, 
+        .menu a:active,
+        .menu a.selected {
+            background-color: darkslategray;
+        }
+
+        .logo{
+            position: relative;
+            display: inline-block;
+            top: 0.6rem;
+            margin: 0px 10px;
+            align-self: center;
+        }
+
+        .logo a img {
+            width: 200px;
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+
+        .menu{ 
+            display: inline-block;
+            position: relative;
+        }
+
+        .autenticacao{
+            position: absolute;
+            display: inline-block;
+            top: 32%;
+            left: 86%;
+        }
+
+        .botao {
+            font-size: 1.2rem;
+            text-decoration: none; /*tira o sublinhado do link*/
+            padding: 10px 30px;
+            border-radius: 25px; /*borda arredondada*/
+        }
+
+        .destaque {
+            color: #fff;
+            background-color: firebrick;
+        }
+
+        @media (max-width: 1200px){
+            .autenticacao {
+                display: none;
+            }
+        }
+
+        @media (max-width: 728px){
+            .cabecalho {
+                padding: 1.3rem 1rem;
+            }
+
+            .logo {
+                top:0.1rem;
+            }
+
+            .menu{
+                display: none;
+            }
+
+            button {
+                border: none;
+                background-color: rgb(44, 44, 44);
+                border-radius: 5px;
+            }
+            button:hover {
+                border: solid 1px #7f7f7f;
+            }
+
+            button:active {
+                background-color: rgb(73, 73, 73);
+            }
+
+            .menu-toggle{
+                display: inline-block;
+                position: absolute;
+                top: 23%;    
+                right: 5%;
+                padding: 12px  16px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <a href="#inicio">
+                <img src="http://files.cod3r.com.br/curso-web/logo.png" alt="Logo" />
+            </a>
+        </div>
+        <button class="menu-toggle">
+            <i class="fa fa-lg fa-bars"></i>
+        </button>
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="#inicio">Início</a>
+                </li>
+                <li>
+                    <a href="#cursos">Cursos</a>
+                </li>
+                <li>
+                    <a href="#sobre">Sobre</a>
+                </li>
+                <li>
+                    <a href="#contato">Contato</a>
+                </li>
+            </ul>
+        </nav>
+        <aside class="autenticacao">
+            <a href="#login">Login</a>
+            <a href="#registar" class="botao destaque">Registrar</a>
+        </aside>
+    </header>
+
+    <script>
+        /* 
+        Sempre que haver mudança do #hash (no caso, a url com o link de referência de cada botão) o código deve verificar
+        essa mudança de url e manter selecionado nos menus o botão referente aquela página. A partir dum evento que detecte essa mudança
+        */
+       window.onhashchange = function (e) {
+        const oldURL = e.oldURL.split('#')[1] //pegar só depois do #
+        const newURL = e.newURL.split('#')[1]
+        //console.log(`URL Inteira
+        //                old: ${e.oldURL}
+        //                new: ${e.newURL}`)
+        console.log(oldURL,newURL)
+
+                                                //`.menu [href='#${oldURL}']` poderia ser sem o li, mas assim é mais específico 
+        const oldLink = document.querySelector(`.menu a[href='#${oldURL}']`) /*item da classe menu em que o href seja esse*/
+        const newLink = document.querySelector(`.menu a[href='#${newURL}']`)
+        console.log (oldLink)
+        oldLink && oldLink.classList.remove('selected')
+        newLink && newLink.classList.add('selected')
+    }
+    </script>
+</body>
+
+</html>

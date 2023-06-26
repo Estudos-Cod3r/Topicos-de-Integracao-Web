@@ -1,0 +1,223 @@
+<h1>Imagens</h1>
+
+<div wm-slider>
+<!--Desafio de slider
+    Criar Slider em js que pegue essas imagens e mova-as de 1000px a 200px no eixo X, 
+    passando por todas as imagens e recomeçando da primeira, de maneira infinita.
+    O uso da propriedade position:absolute nas tags <p> facilitará o desafio. (Todas ficarão no topo esquerdo)
+-->
+
+    <p>
+    <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" 
+    alt="Muro Cidade Mar" 
+    width="513" height="342"
+    title="Muro da Cidade por Tarso"> <!--O title aparece ao ficar com o mouse em cima da imagem, o alt somente quando não é carregada ou para efeitos de acessibilidade visual-->
+    </p>
+
+    <p> <!-- para ver o alt em ação-->
+        <img src="http://files.cod3r.com.br/curso-web/imagem001.jpg" 
+        alt="Muro Cidade Mar" 
+        width="513" height="342"
+        title="Muro da Cidade por Tarso"> <!--O title aparece ao ficar com o mouse em cima da imagem, o alt somente quando não é carregada ou para efeitos de acessibilidade visual-->
+    </p>
+
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem2.gif" 
+        alt="Intro Cod3r"
+        height="342"> <!--Proporcional ao alterar somente uma mediad-->
+    </p>
+
+
+    <p class="circular">
+        <img src="http://files.cod3r.com.br/curso-web/imagem3.png" 
+        alt="Efeito png com fundo"
+        height="342">
+    </p>
+
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem3.png" 
+        alt="Efeito png sem fundo"
+        height="342">
+    </p>
+
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/avatar.jpg" 
+        alt="Texto com imagem"
+        height="50" 
+        align = "left"> AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCCCCCCC4
+    </p> <!-- Align é um modificador de texto e funciona com o texto inserido na imagem-->
+
+    <p class="texto">
+        <img src="http://files.cod3r.com.br/curso-web/avatar.jpg" 
+        alt="Texto com imagem"
+        height="50" 
+        align = "left"> AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCCCCCCC4
+    </p> <!-- Align é um modificador de texto e funciona com o texto inserido na imagem-->
+
+    <p class="cidade"> <!--Aplicar uma imagem a partir de uma classe CSS-->
+    </p>
+
+    <p>
+        <picture> <!--Possibilidade de várias fontes e imagens diferentes dentro dessa tag  - e critérios para que as imagens sejam exibidas ou não-->
+            <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png" 
+                media="(min-width: 600px)" > <!--Exibir somente se o tamanho mínimo for 600px - usar media query- é uma condicional-->
+                <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" alt="Logo"> <!--Somente será exibida se a condição acima não for atingida ou não puder ser exbida/vísivel-->
+                <!--Se o source estiver com problema na fonte/source, nenhuma das imagens será exibida-->
+        </picture>
+    </p>
+</div>
+
+<style>
+
+    /*Essa tag não é obrigatória para o desafio, poderia ser feita em js*/
+   /* .slider{
+        position: absolute;
+        display: none;
+    }
+*/
+/**********************************************/
+
+p{
+        position: absolute;
+        padding: 25px;
+    }
+    .texto{
+        width: 400px;
+    }
+    .texto img{
+        margin-right: 12px;
+    }
+    .cidade{
+        width: 513px;
+        height: 342px;
+        background-image: url("http://files.cod3r.com.br/curso-web/imagem4.jpg");
+        background-position: center; /*Centralizar img dentro desse elemento - se com tamanho errado, move ela dentro da máscara criada pelo tamanho desse item*/
+        background-repeat: no-repeat; /*Não repetir img (tal qual textura)*/
+        background-size: 200%; /*Aplica zoom/aumento na img, que é background*/
+    }
+    .circular{
+        width: 513px;
+        background-color: blueviolet;
+    }
+
+</style>
+
+
+<script>
+    const tempoSlider = 20 //em ms
+    const passo = 5
+    function moverEsquerda(elem, posInicio, posFinal, passo, callback){
+        const novoInicio = posInicio-passo
+        if(novoInicio>=posFinal)
+            {
+                elem.style.left = novoInicio + 'px'
+                setTimeout(() => moverEsquerda(elem,novoInicio,posFinal,passo,callback), tempoSlider)//ira mover após x tempo
+            }
+        else {
+            callback() //sinalizar que o movimento foi finalizado
+        }
+    }
+    
+    function slider(){ //funciona somente para um slider
+        const elementos = document.querySelectorAll('[wm-slider] p') //o querySelector all não retorna um array, mas sim um node list
+        const slides = Array.from(elementos)
+
+        exibirSlides(slides,slides[0])
+
+    }
+    
+
+    function exibirSlides(slides, slide){
+        slide.style.display = 'block'
+        const inicio = innerWidth //tamanho da tela atual
+        const fim = -slide.clientWidth //largura do parágrafo
+        
+        slide.style.left = `${inicio}px`
+        
+        moverEsquerda(slide,inicio,fim,passo, ()=>{
+            slide.style.display = 'none'
+            exibirSlides(slides,getProximo(slides,slide))
+        })
+    }
+
+    function getProximo(lista, atual){
+        const i = lista.indexOf(atual) + 1 //a porra que eu queria
+        return i < lista.length ? lista[i] : lista [0]
+            //se i for menor tam-1   retorne o próximo    senão recomece
+    }
+    document.querySelectorAll("[wm-slider] p").forEach( p => {
+        p.style.display = 'none'
+    })
+    slider()
+
+    //Minha úlltima tentativa de slider - resultados +-
+    //const div = document.querySelector("[wm-slider]")
+    //const posInicial = 1000
+    //const posFinal = -1000
+    //const passo = 5
+
+    //setInterval(() => {
+    //    let p = div.children[i]
+    //    p.style.display = 'block'
+    //    console.log(p.style.display)
+
+    //    moverEsquerda(p,posInicial,posFinal,passo, () =>{
+    //        p.style.display = 'none'
+    //        console.log("Acabou o Elemento: " + p.innerHTML)
+    //        })
+
+    //    console.log("Contador do SetInterval: " + i)
+    //    i++
+    //    if (i >= div.childElementCount-1)
+    //        i = 0
+    //}, 5000)
+
+
+
+
+
+
+    //Tentativas anteriores
+    //const p = document.querySelector('[wm-slider] p')
+    //p.style.display = 'block'
+    //moverEsquerda(p, 1000, 200, 5, ()=> console.log("Fez"))
+
+
+    //let n = 0
+    //const mover = (p,pos) =>{
+    //    //console.log("Left atual: " + p.style.left)
+    //    const str = `${pos}px`
+    //    //console.log("Posição nova: " + str)
+    //    p.style.left = str
+    //    //console.log("Moveu - p.left = " + p.style.left)
+    //}
+    //const iterarParagrafos = _ => {
+    //    if(n<=1){
+    //        document.querySelectorAll("[wm-slider] p").forEach( p =>{
+    //        p.style.left = '1000px';
+    //        p.style.display = 'block'
+    //        let cont = 1000;
+    //        while(cont>200){
+    //            cont-=100
+    //            console.log("Antes de 1s")
+    //            setTimeout(mover(p,cont),1000000)
+    //            console.log("Depois de 1s")
+    //            //setInterval(mover(p, cont), 1000)
+    //        }
+    //        console.log("Acabou o paragráfo")
+        
+    //    //p.style.display = 'block'
+    //    //    if(i<0)
+    //    //        p.style.display = 'none'
+    //    //    p.style.left = `${i}px`
+    //    //    i*=(-1)
+    //    //    console.log(i)
+    //    //p.style.display = 'none'
+    
+    //})}
+    //    n++
+    //    console.log("Acabou tudo")
+    //}
+    //setInterval(iterarParagrafos, 5000)
+</script>
+

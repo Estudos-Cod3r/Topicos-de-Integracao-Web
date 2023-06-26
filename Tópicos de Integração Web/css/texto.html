@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Texto</title>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <style>
+        /* 
+         */
+        * {
+            margin: 0;
+        }
+
+        html{
+            font-size: 28px; /*Alterará as medidas relativas, em principal rem*/
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        div {
+            font-size: 50px; /*Agora os ems dentro da tag div utilizarão essa medida de fonte - o em pega a unidade definida mais próxima de sua atribuição*/
+        }
+
+        p {
+            /*Valores padrões*/
+            /*Lembrando que em e % seguem o padrão estabelecido na div, caso a mesma use de propriedades diferentes do browser para fonte*/
+            font-size: 1em; /*Dizendo de frma explicita para seguri o padrão*/
+            font-size: 100%; /*Same*/
+            font-size: 16px; /*Valor de referência/padrão do browser*/
+            font-size: 12pt;
+
+            /*unidades absolutas */
+            font-size: 100px; /*Relativo a dpi*/
+            font-size: 72pt; /*equivalente a 1 polegada*/
+            font-size: 1in; /*1 pol*/
+
+            /*unidades relatias*/
+            font-size: 2.2em; /*Aplicando o tamanho na div, ele a úsará pois referência mais próxima*/
+            font-size: 2.2rem; /*Agora sim ele pega o do browser - ou melhor, o do html*/
+            font-size: 50vh;
+            font-size: 10vw;
+
+            /*fontes do próprio browser*/
+            font-family: monospace; /*monoespaçado*/
+            font-family: Georgia, serif;
+            font-family: Verdana, sans-serif;
+            font-family: 'Indie Flower', cursive;
+
+            font-weight: 100; /*vai de 100 a 900 ou até bolder*/
+            font-style: italic;
+            text-transform: uppercase; /*ctrl+espaço para ver todas as possibilidades*/
+            /*text-decoration: overline underline line-through dashed;*/
+            word-spacing: 20px; /*Espaçamento entre palavras*/
+            letter-spacing: 20px; /*espaçamento entre letras - kerning*/
+            line-height: 2.5em; /*altura de cada linha*/
+            text-align: center; /*e outras opções*/
+
+        }
+
+        /*Uma classe de estilo mais genérica para o botão*/
+        .botao {
+            font-size: 28px;
+            text-decoration: none; /*tira o sublinhado do link*/
+            padding: 10px 30px;
+            border-radius: 25px; /*borda arredondada*/
+        }
+
+        /*uma classe para aí sim darmos a decoração do botão*/
+        .destaque{
+            color: #fff;
+            background: tomato;
+            box-shadow: 2px 2px 1px 1px #000;
+        }
+
+        /*Classe + pseudo-classe, irá funcionar por cima do destaque quando for ativo*/
+        .botao:active { /*Quando o link for ativo/clicado*/
+            box-shadow: none;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <p>
+            Que texto
+            <br>legal!!!
+        </p>
+    </div>
+    <a href="http://google.com" class="botao destaque">Google</a>
+</body>
+
+</html>

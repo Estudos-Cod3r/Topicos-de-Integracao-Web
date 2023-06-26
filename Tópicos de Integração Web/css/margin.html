@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Margin</title>
+    <style>
+        
+         /*
+            Margin-Collapse: é quando uma margem se sobrepõe a outra, pois não há tamanho o suficiente na tela para comportar as duas
+            
+            Nos exemplos abaixo, a margem do conteúdo 2 e 1 se sobrepoem e, no momento, tornam-se um único espaço compartilhado
+            
+            O elemento hidden, embora exista, não está sendo contado como algo no meio destes dois conteúdos - se o mesmo torna-se visual, aí sim teremos
+            uma nova distribuição de margem dos dois até a borda deste, com 30 cada (isso pode ser por deixar a borda vísivel ou colocar algum conteúdo dentro da tag )
+            
+
+        */
+         
+        body {
+            margin: 0;
+            font-size: 40px;
+        }
+
+        div {
+            border: solid 5px #222;
+        }
+
+        .m30 {
+            margin: 30px;
+        }
+
+
+        .mb30 {
+            margin-bottom: 30px;
+        }
+
+        .mt30 {
+            margin-top: 30px;
+        }
+
+        /* 
+            Possíveis maneiras de evitar o margin-collapse:
+
+            float: left / right
+            position: absolute
+            display: inline-block
+        */
+    </style>
+</head>
+
+<body>
+    <div class="m30">Conteúdo 1</div>
+    <div class="m30" style="border: none"></div>
+    <div class="m30">Conteúdo 2</div>
+    <div class="mb30">Conteúdo 3</div>
+    <div class="mt30">Conteúdo 4</div>
+</body>
+
+</html>

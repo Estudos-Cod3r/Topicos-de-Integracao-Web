@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Grid #01</title>
+    <style>
+        /* https://caniuse.com/#feat=css-grid - estatística de quão usada é essa tecnologia
+        
+            O Firefox tem uma ótima ferramenta para visualização da grid no inspetor de elementos dele
+        */
+
+        /* 
+            CSS Grid trabalha de forma bidimensional - linha x coluna - Bastante usado para organizar o layout macro da aplicação (Header, menu, content, footer
+            display: grid;
+        */
+
+        
+        html,
+        body {
+            margin: 20px;
+            height: calc(100% - 40px);
+            background-color: lightgray;
+        }
+        
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            border: solid 5px dodgerblue;
+            background: #fff;
+        }
+
+
+        /*A partir daqui*/
+
+        body {
+            display: grid;
+            grid-template-columns: 50% 50%; /*Duas colunas, cada uma ocupando 50% do espaço*/
+            grid-template-columns: repeat(4, 8.33%); /*4 colunas com 8.33% cada*/
+            grid-template-columns: repeat(4, 8.33% 8.33% 8.33%); /*Cada coluna ocupará 8.33% do espaço, e teremos repetidas as 3 colunas por 4 vezes (4x3 = 12)
+            /*Seria o mesmo que dividir 100% por 12, nesse caso*/
+            /*Ou usar repeat(12,8.33%)*/
+            grid-template-columns: repeat(11,100px) 100px; /*irá gerar 11 pelo repeat e mais uma (12) por fora*/
+            /*Para ilustrar que pode-se usar o repeat com outras propriedades*/
+
+            /*É possível definir o intervalo de uma coluna: 
+                minmax(100px,300px) - ocupará entre esses 2 valores
+            */
+            grid-template-columns: 200px 20% 1fr;
+            /*1fr é 1 fragmento - todo o resto que "sobrar"*/
+            grid-template-columns: 3fr 6fr 3fr; /*Seguindo o padrão do Boostrap, inclusive*/
+            /*A soma é 12 fragmentos, com cada qual pegando uma parcela - sendo a do meio metade*/
+
+            grid-template-rows: 50% 25% 12.5% 12.5%;
+            grid-template-rows: 100px 1fr;
+            /*
+            O último grid columns foi para 3, logo, rows necessita ser para 3 a fim de termos o suficiente para 12 items (3x4)
+            Neste caso, especificando somente 2 linhas, o CSS irá usar o especificado para as primeiras duas linhas e usar o espaço restante
+            para as últimas duas linhas - lembrando que a segunda linha pegará 1fr, então para as linhas 3 e 4 sobrará bem pouco espaço - mas o suficiente*/
+            grid-template-rows: 100px 100px; /*Nesse caso as últimas pegarão todo o restante invés do menor possível*/
+
+            grid-template-rows: 100px auto; /*O auto dividirá de forma igualitaría as 3 linhas restantes*/
+            /*grid-template-rows: 100px auto auto auto; /*Aí sim teríamos a visualização correta no mozilla, contando os negativos de linhas a partir da última*/
+        }
+
+        .d8 {
+            grid-column-start: 2; /*Para ele "começar" a partir de x coluna*/   
+            grid-column-end: 4; /*Para ele "terminar" na coluna y*/
+            /*Logo, ele ocupará os espaços da cluna 2 3 e 4*/
+            grid-column-end: span 2; /*a partir do começo dê um span de 2 casas - fará a mesma coisa que o último exemplo*/
+            /*Foi empurrado o 9 uma casa para abaixo, começando essa linha e o mesmo com o 10, ficando sozinho abaixo dele (fica 9 11 12 na mesma linha)
+                Se aplicarmos também o row, podemos empurrar o 11 e 12 para o lugar correto, pegando maais linhas para o 8*/
+            grid-row-start: 3;
+            grid-row-end: 5;
+            grid-row-end: span 2;
+            /*Linhas podem ter nomes diferentes, talvez seja melhor aplicar o span nº casas para um entendimento mais fácil*/
+        }
+        
+        /*Sobreposição de células*/
+
+        .d10,
+        .d11{
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 5;
+            grid-row-end: span 1;
+            /*O 11 sobrepõe o 10, visto que ele renderiza por último*/
+        }
+
+        .d10{
+            z-index: 1; /*Quanto maior o z-index + na frente dos outros elementos ele fica*/
+        }
+    </style>
+</head>
+
+<body>
+    <div class="d1">1</div>
+    <div class="d2">2</div>
+    <div class="d3">3</div>
+    <div class="d4">4</div>
+    <div class="d5">5</div>
+    <div class="d6">6</div>
+    <div class="d7">7</div>
+    <div class="d8">8</div>
+    <div class="d9">9</div>
+    <div class="d10">10</div>
+    <div class="d11">11</div>
+    <div class="d12">12</div>
+</body>
+
+</html>

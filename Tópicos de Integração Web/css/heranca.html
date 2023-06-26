@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Herança</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong">
+    <style>
+        /*
+         "Uma tag body é a mãe de todas as outras"
+            Algumas propriedades são transmitidas por herança para as tags filhas
+                -É possível usar a palavra-chave *inherit* para que propriedades não transmitadas sejam transmitidas
+
+                
+                also, no inspetor do browser é possível ver as hierarquias e heranças, por qual aparece primeiro no elemento: Inline, browser, próprias e herança
+                    Não heranças naturais aparecem acinzentados no elemento filho
+                    E heranças descartadas aparecem riscadas
+
+
+                Sidenote: é possível aplicar uma referência por link do google fonts em qualquer documento html
+                https://www.w3schools.com/css/css_font_google.asp
+                https://developers.google.com/fonts/docs/getting_started?hl=pt-br
+         */
+
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
+        body{
+            font-family: 'Bebas Neue','Sofia','AudioWade','Trirong', sans-serif; /*Naturalmente transmitida como herança*/
+            font-size: 40px;
+            border: solid 3px red;
+            padding: 50px;
+        }
+
+        /*Não se usa muito o inherit - mas não é uma prática ruim, não*/
+        div{
+            border: inherit; /*Propriedades não transmitidas por padrão*/
+            padding: inherit;
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+    <!--h1 herda do broswer(chrome) o tamanho 2em-->
+    <h1 style="font-size: 3em;">Herança</h1>
+    <div>Estou herdando
+        <p>Herdei do body?</p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #04</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Formulário</h1>
+    <form name="pesquisa" action="http://www.google.com.br/search">
+        <input type="text" name="q" placeholder="Digite o termo...">
+        <select name="hl">
+                <option value="pt-br">Português (Brasil)</option>
+                <option value="en-us">Inglês (Americano)</option>
+            </select>
+        <button wm-submit>Pesquisar</button>
+    </form>
+    <script>
+        // Interceptar o evento de submit dum formulário
+        //Pode-se parar tanto no submit quanto no clique do botão
+
+        //pelo botão
+        const submit = document.querySelector('[wm-submit]')
+        submit.onclick = function (e) {
+            e.preventDefault()
+
+            //Dados do formulário a partir do formData
+            const form = e.target.parentNode//e.target é o botão, seu pai é o formulário (quem contém as informações)
+            const formData = new FormData(form) 
+            formData.append('ajax', true) //Adicionou uma nova informação no formdata - de que req ajax pode ser feita
+            console.log(formData.get('q')) //pegar valores que serão passados pelo formulário
+            console.log(formData.has('hl')) //tem x elemento?    
+
+            //FormData tem um interator associado
+            for(let dado of formData){
+                console.log(dado)
+            }
+            //Importante o let dado para deixar a variável disonível somente no escopo da função, ou a mesma fica disponível de maneira global - window.dado
+        }
+        
+        //pelo submit
+        const form = document.forms[0] //só tem um form
+        form.onsubmit = function (e) {
+            e.preventDefault()
+
+            //Dados do formulário a partir do formData
+            const form = e.target//e.target é o formulário
+            const formData = new FormData(form) 
+            formData.append('ajax', true) //Adicionou uma nova informação no formdata - de que req ajax pode ser feita
+            console.log(formData.get('q')) //pegar valores que serão passados pelo formulário
+            console.log(formData.has('hl')) //tem x elemento?    
+
+            //FormData tem um interator associado
+            for(let dado of formData){
+                console.log(dado)
+            }
+            //Importante o let dado para deixar a variável disonível somente no escopo da função, ou a mesma fica disponível de maneira global - window.dado
+        }
+        
+
+
+
+    </script>
+</body>

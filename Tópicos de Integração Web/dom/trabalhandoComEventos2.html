@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <div>Elemento</div>
+    <script>
+        // Um evento pode invocar uma ou mais funções
+        // Todas as funções recebem o evento como parâmetro/atributo
+        // Dentro do evento têm várias informações como quem disparou o evento, se clique - qual a posição do mouse, qual o botão do mouse que clicou? etc
+        //Objetivo desse exemplo é poder clicar e arrastar a div com o mouse
+
+        const item = document.querySelector('div')
+        item.style.position = 'absolute' //para que possa ser posicionado fora de suas restriçoes inicais
+
+        item.onmousemove = e => {
+            item.style.cursor = 'move' //mude o estilo do mouse quando este sobrevoa/se move pela div
+
+            //Verificar se o clique está selecionado
+            if(e.buttons){ //Se tiver algum botão clicado
+                                 //item.clientHeight poderia/deveria ser e.target.clientHeight, é a mesma coisa
+                const item = e.target //para diferenciar / outro exemplo
+                //Target é quem disparou o evento (div)
+                //Setar posição de onde ela está relacionada ao topo da página
+                e.target.style.top = `${e.clientY - (e.target.clientHeight / 2)}px` //A posição Y do mouse - a altura da div/2
+                                                                                    //Pro mouse ficar bem no meio do elemento ao ser arrastado
+                item.style.left = `${e.clientX - (item.clientWidth / 2)}px`
+            }
+        }
+
+
+
+
+    </script>
+</body>

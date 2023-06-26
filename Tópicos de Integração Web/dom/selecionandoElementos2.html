@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #02</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo"><span wb-attrib>.terceiro .ultimo</span></div>
+    <script>
+        // ...
+
+        //O query selector espera um seletor css (classe, id, tag, atributo, atributo de tipo x, elemento aninhado, elementos que NÃO tenha y classe)
+        document.querySelector('#primeiro').classList.add('destaque') //Precisa do serquilha para indicar que é por id
+
+        // Query selector All não retorna um html collection, mas sim uma nodeList - e ela tem a função forEach
+        //No entanto, ainda não é um Array - as funções map, reduce, filter e afins não estão presentes, ainda precisando transforma-lo para array
+        //Pode-se transformar da mesma forma normal, com array.from ou .array oy [...nodeList]
+        const selecionar = seletor =>
+            document.querySelectorAll(seletor).forEach(e => { e.classList.add('destaque') })
+            
+        const desselecionar = seletor =>
+            document.querySelectorAll(seletor).forEach(e => { e.classList.remove('destaque') })
+            
+        selecionar('div')
+        desselecionar('*') //Seletor global - todo mundo
+
+        selecionar('.ultimo.terceiro') //seleciona aquele que tem ambas - não importa a ordem dos fatores, desde que tenha
+
+        desselecionar('*')
+
+        selecionar(':not(#primeiro)') //:not é uma pseudo classe que nega o parâmetro recebido - pegará todos que não tiverem o id #primeiro
+        desselecionar('*')
+
+        selecionar(':nth-child(1)') //O primeiro filho de algum elemento (como visto, pseudo classes css funcionam)
+        desselecionar('*')
+
+        selecionar('div:nth-of-type(1)') //O enegésimo elemento do tipo div
+        selecionar('span:nth-of-type(1)') //O enegésimo elemento do tipo span
+        desselecionar('*')
+
+        selecionar('[wb-attrib]')
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<table> <!-- border="1" pra dar borda-->
+    <caption>Produtos</caption> <!-- Indica o que representa essa tabela - é rado de usar-->
+     <!--A tabela é composta por cabeçalho, corpo e rodape-->
+     <thead> <!--Todas áreas são opcionais-->
+        <tr> <!--Table Row - Uma linha-->
+            <th>Produto</th> <!-- th seria um table head, também-->
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Total</th>
+        </tr>
+     </thead>
+     <tbody> <!--Onde vão os dados-->
+        <tr>
+            <td>Ipad</td> <!-- td = table data-->
+            <td>3279,00</td>
+            <td>5</td>
+            <td>1600,00</td>
+        </tr>
+        <tr>
+            <td>Samsung S9</td> <!-- td = table data-->
+            <td>3009,00</td>
+            <td>3</td>
+            <td>15000,00</td>
+        </tr>
+        <tr>
+            <td>Xiaomi</td> <!-- td = table data-->
+            <td>1279,00</td>
+            <td>10</td>
+            <td>1279,00</td>
+        </tr>
+     
+     </tbody>
+     <tfoot>
+        <tr> <!-- colunas que esse td é equiparado a / / o mesmo com row-->
+            <td colspan = "3" rowspan="2">Total</td>
+            <td>R$ XXXX,00</td>
+        </tr>
+        <tr>
+            <td>Teste</td>
+        </tr>
+     </tfoot>
+</table>
+
+<style>
+    table{
+        border-collapse: collapse;
+    }
+
+    th,td{
+        padding: 10px;
+    }
+    
+    /*tr dentro de thead*/
+    thead tr{
+        border-bottom: solid 3px #444;
+    }
+
+    tbody tr :hover{ /*Quando o mouse passar por cima*/
+        background-color: #bebebe;
+    }
+    /*
+    aplicar as td que são pares (even) ou ímpares (odd)
+    tr td:nth-child(even){
+		background: #444;
+	}
+    */
+    tfoot{
+        background-color: #444;
+        color: #fff;
+        font-weight: bold;
+    }
+</style>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #03</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <ul id="compras" destino='escritório' data-urgencia="5">
+            <li>Café</li>
+            <li>Água</li>
+            <li>Copo Descartável</li>
+        </ul>
+    </div>
+    <script>
+        // Como acessar os atributos personalizados a partir da notação ponto(.) - que eu chamei até agora de "seco"
+        //No entanto dessa forma é possível somente ler os valores e não altera-los
+        const lista = document.querySelector('#compras')
+        console.log(lista.attributes)
+        console.log(lista.attributes[0])
+        console.log(lista.attributes.id)
+
+        
+        console.log(lista.attributes[1])
+        console.log(lista.attributes.destino)
+        console.log(lista.attributes[2])
+        console.log(lista.attributes['data-urgencia'])
+        //não seria possível lista.attributes.data-urgencia, como visto no acessandoAtributos2
+    
+        //Novamente, somente é possível leitura
+        //A tentativa de altera-lo nao modificará seu valor dentro do html, de fato
+        //NÃO usar
+        lista.attributes.destino = 'casa'
+        console.log('O valor de destino sem alterar no html: ', lista.attributes.destino) //Então essa alteração não tem valor real para o html/dom
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <p>Texto Inicial</p>
+    </div>
+    <script>
+        // ...
+
+        const div = document.querySelector('div')
+        div.innerHTML = 'Texto Alterado' //InnerHtml altera TUDO dentro do html da div - nesse caso, substituindo o p por esse texto
+        //div.outerHTML = 'Div Alterada' //Substitui não somente dentro, mas fora também - ou seja, altera a existencia da prórpia <div> em si, substituindo-a por texto (nesse caso)
+
+        //Inserir fora da div, irmão/adjacente a ela
+        div.insertAdjacentHTML('beforebegin','<p> Antes de Iniciar a DIV, inserir um paragráfo </p>')
+        div.insertAdjacentHTML('afterbegin', '<p> Depois do inicio da div - ou seja, DENTRO dela </p>') //Vulgo, o primeiro elemento
+        div.insertAdjacentHTML('beforeend', '<p>O último elemento antes do fim da div</p>')
+        div.insertAdjacentHTML('afterend', '<p>Depois da div</p>')
+
+        //Somente texto, sem tags
+        console.log(div.innerText)
+        console.log(div.innerHTML) //Pega as tags
+
+    </script>
+</body>
+
+</html>

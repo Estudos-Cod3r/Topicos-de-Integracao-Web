@@ -1,0 +1,81 @@
+</html>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #03</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+        }
+        
+        .esquerda {
+            height: 100vh;
+            width: 50%;
+            background-color: coral;
+        }
+        
+        .direita {
+            height: 100vh;
+            width: 50%;
+            background-color: cornflowerblue;
+        }
+        
+        .item {
+            border: solid 5px black;
+            background-color: darkgrey;
+            color: white;
+            height: 100px;
+            font-size: 40px;
+            margin: 10px;
+            vertical-align: middle;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="esquerda" wm-dropzone>
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+    </div>
+    <div class="direita" wm-dropzone></div>
+    <script>
+        // Implementar um drag n drop
+        //Somente itens dentro da div dropzone
+        const items = document.querySelectorAll('[wm-dropzone] .item')
+        items.forEach((item,index) => {
+            //Adicionar id aos items, para auxilio
+            item.draggable = true //torna o item arrastável
+            item.id = item.id || `draggable-item-${index}`
+            //quando começar a arrastar o elemento 
+            item.ondragstart = e =>
+                e.dataTransfer.setData('item-id',e.target.id)
+                //Setou os dados que serão transferidos no fim do arrasto
+        })
+
+        const dropzones = document.querySelectorAll('[wm-dropzone]')
+        dropzones.forEach(dropzone=>{
+            //Quando acabar o arrastar mas antes de soltar
+            dropzone.ondragover = e => e.preventDefault() //impede o default, do elemento voltar à posição inical
+            //ou o próximo evento não é chamado
+
+            dropzone.ondrop = function (e) {
+                //Passaremos o id do item que está "flutuando" desde o começo do arrastão
+                const id = e.dataTransfer.getData('item-id')
+                const item = document.getElementById(id)
+                //e.target é o elemento que disparou o evento e não necessariamente o elemento dropzone
+                //e.target.appendChild(item) //passa o elemento para outro pai //Será possível apender para qualquer elemento, inclusive outros items, parecendo um jogo de cartas
+                dropzone.appendChild(item) //Passa para a dropzone como o pai
+                //automaticamente tira do outro pai
+            }
+        })
+
+    </script>
+</body>
+
+</html>

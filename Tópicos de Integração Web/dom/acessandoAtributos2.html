@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <label for="compras">Compras</label> <!-- O atributo for indica que o label está relacionado a ul, de id #compras-->
+        <ul id="compras" destino='escritório' data-urgencia="5" data-blabla="'opa">
+            <li>Café</li>
+            <li>Água</li>
+            <li>Copo Descartável</li>
+        </ul>
+    </div>
+    <script>
+        // ...
+        const lista = document.querySelector('div ul[destino="escritório"]')
+        console.log('Elemento "ul"................')
+        console.log('childNodes: ', lista.childNodes) //Propriedade própria - outro exemplo: lista.id
+        console.log('destino: ', lista.destino)
+        console.log('getAttribute: ', lista.getAttribute('destino')) //Propriedade personalizadas - lista.destino NÃO funciona, outro motivo para preferir getAttribute
+        console.log('hasAttribute: ', lista.hasAttribute('destino'))
+        lista.setAttribute('destino','empresa') //O valor de destino passa a ser 'empresa'
+        lista.setAttribute('status', 'aberto') //adiciona um status
+        lista.remove('destino') //deleta
+
+        //Atributos personalizados que tem o data- são tratados de maneira diferente
+        //Espera-se que os atributos personalizados comecem com data-
+        //No entanto, mesmo os frameworks não utilizam tanto este padrão data-
+        console.log(lista.dataset) //retorna todas as propriedades data-, removendo o prefixo
+        console.log(lista.dataset.urgencia) //acessa diretamente um dos atributos data-
+        lista.dataset.urgencia = 4 //possível alterar diretamente o valor
+        //Também é possível acessa-lo pelo getAttribute, sem problemas
+        console.log('Data-urgencia: ',lista.getAttribute('data-urgencia') )
+        //lista.data-urgencia não existe, devido ao hifen, não é identificado pelo js - necessário acessa-lo como uma string
+
+        
+        //Cuidados!
+        //    Nem todo atributo que está definido no html estará disponível com o mesmo nome    
+        const label = document.querySelector('label') 
+        console.log('For seco: ', label.for) //como for é uma palavra reservada da linguagem, não é possível utiliza-lo de maneira seca
+        console.log('htmlFor: ', label.htmlFor) //htmlFor é a maneira correta
+        console.log('For getAtt: ', label.getAttribute('for')) //Necessário usar ou getAtt ou htmlFor
+    </script>
+</body>
+
+</html>

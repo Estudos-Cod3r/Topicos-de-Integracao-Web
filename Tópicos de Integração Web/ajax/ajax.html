@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<!--Para os testes e exercícios: iniciar servidor http para visualizar a página em navegador e realizar as requisições-->
+
+<head>
+    <meta charset="UTF-8">
+    <title>O que é Ajax?</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <style>
+        p {
+            font-size: 2em;
+        }
+        
+        li {
+            font-size: 1.5em;
+        }
+        
+        .destaque {
+            font-size: 1.5em;
+            font-weight: 900;
+        }
+    </style>
+</head>
+
+<body class="conteudo">
+    <p>
+        <span class="destaque">A</span>synchronous <span class="destaque">J</span>avaScript <span class="destaque">A</span>nd <span class="destaque">X</span>ML (AJAX)
+    </p>
+    <!--Hoje em dia não é mais tão usado o XML, mas sim o JSON em seu lugar-->
+    <ul>
+        <li>É uma <span class="destaque">técnica</span> usada com JavaScript</li>
+        <!--A requisição é agora disparada pelo JS e não mais pelo browser, não tendo a espera de resposta do navegador antes de prosseguir com alguma
+        requisição - pode ter suas outras funcionalidades normalmente enquanto espera por ela - podendo atualizar a página ou parte dela
+        quando tiver a resposta -->
+        <li>Atualiza a página (ou parte dela) sem recarregar (reload)</li>
+        <li>Comunica de forma assíncrona com um Servidor Web, ou seja, envia e recebe dados em <i>background</i></li>
+        <li>Usa muito... Callback, Promise, Async/Await</li>
+        <!--Padrão de projeto OBSERVER é trabalhado com as callbacks (realizar x coisa dependendo de sucesso ou erro na resposta, mas só quando essa chega)
+        e por tal motivo é o padrão de projeto mais usado na web-->
+    </ul>
+</body>
+
+
+<!--extras:
+npm init -y instala o package.json e npm i instala todas as dependências descritas nele-->
+<!--Serão usados nodemon, bodyparser (traduz dados e deixa-os pronto para uso no backend), express, multer (para upload)-->
+
+</html>

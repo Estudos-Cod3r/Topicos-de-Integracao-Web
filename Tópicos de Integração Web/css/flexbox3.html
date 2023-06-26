@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox #03</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        /* ... */
+
+        div{
+            border: solid 5px dodgerblue;
+            font-size: 40px;
+        }
+
+        .flex-container div{
+            box-sizing: border-box;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-direction: row; 
+            /*Se a direçao for row, o basis terá 100px de largura - se for collumn, será de altura (Main axis né)*/
+        }
+
+        /*Flex Basis: a propriedade oficial para se falar sobre a largura/dimensão de determinado elemento dentro do flex container no sentido do main axis*/
+        .flex-container div{
+            /*100px será o tamanho total, considerando conteúdo padding e borda, conforme box-sizing: border box*/
+            flex-basis: 100px;
+            width: 200px; /*Não será levado em conta - só o flex-basis*/
+            /*Se utilizar uma dimensão diferente da direção do flex, aí sim ela será considerada (então no caso de row considera altura e no caso de collumn a largura)*/
+            height: 100px;
+        }
+
+        .flex-container div:nth-child(4) {
+            /*propriedades shortcut*/
+            flex: 3 6 100px ; /*define grow, shrink e basis*/
+        }
+
+        .flex-container { 
+            width: 300px; /*para testar shrink*/
+            width: 600px; /*Pra testar grow*/
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container tag nolabel">
+        <div class="tag nolabel">1</div>
+        <div class="tag nolabel">2</div>
+        <div class="tag nolabel">3</div>
+        <div class="tag nolabel">4</div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

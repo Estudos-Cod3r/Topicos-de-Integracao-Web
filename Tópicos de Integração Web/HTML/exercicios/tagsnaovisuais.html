@@ -1,0 +1,60 @@
+<h1>Tags Não Visuais</h1>
+<p>Ambos são agrupadores e trabalham bem com estilos (pra containers e afins)</p>
+<div>
+    <p>É um display block,ocupa uma linha própria <div> saca</div> ainda tá no mesmo "< p> "</p>
+</div>
+
+<p>O span é naturalmente <span>inline</span> e usado pra aplicar estilos em parte do texto <span>sem quebrar muito do restante</span> 
+    com <span>destaque</span></p>
+
+
+    <h2>Tags Semânticas</h2>
+
+    <section>section - agrupamento temático dentro do conteúdo, como sec 1, sec 2, sec 3</section>
+    <section> seçao 1</section>
+        <p>Section faz parte do contexto maior</p>
+    <section> seçao 2</section>
+    <section> seçao 3</section>
+    <section> seçao 4</section>
+    
+    <article>Article - Semântica de algo autocontido (não relacionado com o conteúdo em volta, tangencial ao contexto)</article>
+    <header>Header - Relacionado ao cabeçalho</header>
+    <footer>Footer - Relacionado ao rodapé</footer>
+    <p>Todas essas tags eram antes feitas com div + id, mas por uma necessidade de ordenação foram criadas</p>
+    <nav>Nav - agrupamento de links para navegação na página</nav>
+    <aside>Aside - para deixar uma aba lateral (ainda pode ser alterada com css) ou como um adendo/observação ao parágrafo</aside>
+    <details>Details - detalhes adicionais sobre determinado assunto - ex: menu pop-up com infos adicionais de um filme</details>
+
+    <h3>As mais famosas</h3>
+    <div>Div - Agrupamento, divisão e seção - ocupa uma linha inteira</div>
+    <p>Span - <span>agrupamento de elementos inline</span></p>
+
+    <h4>Exemplo de div/span com css</h4>
+    <div class="divinha">Div 1</div>
+    <div class="divinha">Div 2</div>
+
+    <p>Esse é um texto com <span class="diferente">muitas pálavras (span)</span></p>
+
+    <style>
+
+        .diferente{
+            display: block;
+        }
+
+        .divinha{
+            font-weight: bold;
+            font-size: 30px;
+            display: inline;
+        }
+
+        
+
+    span{
+        background-color: #444;
+        margin:10px;
+        font-weight: bolder;
+        color: rgb(244, 230, 199);
+        stroke: rgb(255, 0, 0);
+        stroke-width: 5px;
+    }
+</style>

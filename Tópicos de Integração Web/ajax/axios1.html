@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Axios #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src="js/axios.js"></script> <!--Importação do axios-->
+    <!--Arquivo de 2 linhas sem espaço em branco para diminuir o tamanho dele na hora de carregar o site **-->
+    <!--https://cdn.jsdelivr.net/npm/axios/dist/axios.js - site do axios
+    para importar da internet:
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.js"></script>
+    para instalar no node: npm i axios-->
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        // Axios é um clientHttp criado por terceiros - bastante usado em react
+        // baseado em Promise tal qual o fetch - mas axios tem compatibilidade maior
+        //Requisição get
+        //Funciona igual o fetch, com exceção que não precisa transformar a resp em json - a conversão já é automática
+        const url = 'dados/estados.json'
+        axios(url)
+        .then(resp =>{
+            const itens = resp.data.reduce(//Necessário .dara para acessar os dados - o parser já foi feito, não é json mas sim um obj convertido
+                (html, estado) => html + `<li>${estado.nome}</li>`, ''
+            )
+            document.body.insertAdjacentHTML('beforeend',`<ul>${itens}</ul>`)
+        })
+    </script>
+</body>

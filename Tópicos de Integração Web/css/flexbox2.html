@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox #02</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        /* ... */
+
+        div {
+            border: 5px solid dodgerblue;
+            font-size: 40px;
+        }
+
+        .flex-container div{
+            box-sizing: border-box;
+        }
+
+        .flex-container {
+            display: flex;
+            height: 300px;
+            width: 600px;
+        }
+
+        /*Manipuar um item dentro dum flex container*/
+        .flex-container div:nth-child(3) { /*pegar o terceiro filho*/
+            background-color: indianred;
+            order: 1; /*Passa a ter uma peso maior*/
+            /*Quanto maior a ordem "mais último" será ele exibido*/
+            order: 0; /*Se todos tem a mesma ordem, segue-se a ordem montada no html*/
+            order: -1; /*Passa a ser o primeiro*/
+            
+            /*Pode-se alinhar o próprio elemento dentro do container que o regra*/
+            align-self: center; /*Sai do padrão stretch e se centralizar na sua posição*/
+            align-self: flex-end;
+            align-self: flex-start;
+            align-self: stretch;
+        }
+
+        .flex-container div{
+            width: 100px;
+            /*Do jeito que está, ainda vai haver um espaço entre os elementos e o fim do espaço disponível do container
+                -se utilizar de flex-grow fará os elementos "crescerem" para ocupar todo o espaço disponível
+            O flexgrow somará o peso de todos os itens, dividirá o tamanho que sobra por estes pesos e cada item tomara o resultado desa divisão multiplicado pelo seu peso
+            EX: sobrou: 200px
+            pesos p/ item: 1 | 1 | 1 | 1 -> peso total= 4
+            Cada item receberá 200/4 = 50, multiplicando por seu peso - logo: 50 | 50 | 50 | 50
+            Se 
+            pesos p/ item: 1 | 2 | 1 | 1 => peso total = 4
+            Cada item: 200/5 = 40 -> por item: 40 | 80 | 40 | 40 (multiplicou-se pelos pesos de cada) 
+
+            flex-grow 0 o item somente não cresce
+            */
+            flex-grow: 0;
+            flex-grow: 1;
+            /*flex: 1 2; /*growth e shrink*/
+            
+        }
+
+        .flex-container div:nth-child(1) { /*lembrando que o primeiro elemento é o primeiro definido no html*/
+            flex-grow: 2;
+        }
+
+        /*Flex-shrink - funciona igual o grow, mas para diminuir (ocupar um espaço menor)*/
+        .flex-container { 
+            width: 300px;
+            flex-shrink: 1;
+
+        }
+
+        .flex-container div:nth-child(2){
+            flex-shrink: 5;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="flex-container tag nolabel">
+        <div class="tag nolabel">1</div>
+        <div class="tag nolabel">2</div>
+        <div class="tag nolabel">3</div>
+        <div class="tag nolabel">4</div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

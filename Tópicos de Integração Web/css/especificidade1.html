@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Especificidade CSS</title>
+    <style>
+        /* https://developer.mozilla.org/pt-BR/docs/Web/CSS/Specificity */
+        /*Normalmente segue hierarquia - a primeira classe (e, por vez, propriedade) tem mais importância que a próxima*/
+
+        /*
+        Em linhas gerais: 
+            1.Regra com !important
+                Não recomendado/desencorajado - gera artifícios pra gambiarra e prejudica a leitura e eficácia do código
+            
+            2.Seletores mais específicos 
+
+            3.A última regra é processada primeiro (nos casos de empate para a mesma prioridade - ex: duas fontes a mexer no body ou num body que já tenha estilo (arquivo origem.html explica))
+            
+        */
+        p{/*Propriedade p é geral, é atribuída se não há conflitos*/
+            background-color: grey;
+        }
+
+        .observacao{ /*Uma classe é mais -específica- e, portanto, tem preferência na aplicação do atributo por sobre o P*/
+            background-color: bisque !important; /*Não vai alterar a ordem de aplicação, por mais que ele tenha preferência - 
+                                                    pois as propriedades são distintas entre observação e p.observação:
+                                                                             um é background color e o outro background*/
+            border: dashed;
+            padding: 200px !important; /*Agora como é a *mesma* propriedade entre os dois, essa será aplicada em prioridade*/
+            font-size: 40px;
+            text-align: center;
+        }
+        /*Mesmo se aplicado depois, a especificidade é mais forte*/
+
+        p.observacao{ /*Ainda mais específico*/
+            padding: 5px 60px;
+            /*Teria como colocar um importante aqui de volta, e voltaria a regra do mais específico - por isso não é interessante de usa-lo fora de exceção*/
+            background: linear-gradient(to right, red, yellow);
+        }
+
+        /*Trabalhar com especificidade consciente*/
+
+
+
+    </style>
+</head>
+
+<body>
+    <p class='observacao'>Olha essa observação!!!!</p>
+</body>
+
+</html>

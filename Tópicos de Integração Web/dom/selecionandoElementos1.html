@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #01</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo">.terceiro .ultimo</div>
+    <script>              
+        // ...
+        //Não é bom ter dois elementos com o mesmo id, mas caso tenha, ele pegará o primeiro encontrado (retorna um único elemento)
+        document.getElementById('primeiro').classList.add('destaque') //Já espera receber um id, então não precisa da #
+
+        const divs = document.getElementsByTagName('div') //retorna uma coleção html
+        /*
+            Tem um comando que funciona somente no console que é dir(elemento) - ele retorna a coleção de elementos retornada pelo get document
+            dir(divs) para teste
+            Tem coisas que não é possível fazer com uma htmlCollection, então é interessante transforma-lo num Array
+        */
+       Array.from(divs).forEach( e => e.classList.remove('destaque'))
+
+
+       const divsArray = [...divs] //Operador spread [...]
+       //Espalha cada um dos elementos dentro do novo array
+       divsArray.forEach(e => e.classList.add('destaque'))
+
+       const ultimoElementos = document.getElementsByClassName('ultimo') //retorna uma coleção html
+       for(let e  of ultimoElementos){
+            e.classList.remove('destaque')
+       }
+
+    </script>
+</body>
+</html>

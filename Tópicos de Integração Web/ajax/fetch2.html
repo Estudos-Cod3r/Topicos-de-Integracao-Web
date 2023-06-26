@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Fetch API #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Formulário Via Fetch</h1>
+    <form name="usuarioForm" action="formulario" method="post">
+        <input type="text" name="nome" placeholder="Nome..." />
+        <input type="text" name="sobrenome" placeholder="Sobrenome..." />
+        <button>Salvar</button>
+    </form>
+    <div id="resultado"></div>
+    <script>
+        // ...
+        document.usuarioForm.onsubmit = async e =>{
+            e.preventDefault()
+
+            const form = e.target
+            const data = new FormData(form) //pega o resultado do formulário e preenche o obj
+            data.append('ajax', true) //forma de adicionar dados no FormData
+
+            const options = {
+                method: form.method, //pegando o metódo do próprio formulário
+                body: new URLSearchParams(data) //dados no corpo da requisição - 
+            }
+
+            //fetch(form.action, options) //action é a url a ser disparada, 'formulario'  - seria o mesmo que fetch('/formulario') //options é para personalizar qual o método + enviar o body
+            //.then(resp => resp.json())
+            //.then(json => {
+            //    console.log(JSON.stringify(json))
+            //    const resultado = document.getElementById('resultado')//pega div
+            //    resultado.innerHTML = JSON.stringify(json)
+            //})
+ 
+ 
+            const resultado = document.getElementById('resultado')//pega div
+            //Com tratativa de erro
+            //fetch(form.action, options) //action é a url a ser disparada, 'formulario'  - seria o mesmo que fetch('/formulario') //options é para personalizar qual o método + enviar o body
+            //.then(resp => resp.json())
+            //.then(json => {
+            //    console.log(JSON.stringify(json))
+            //    resultado.innerHTML = JSON.stringify(json)
+            //})
+            //.catch(e =>{
+            //    resultado.innerHTML = e //cuidado para não enviar erro cru ao usuário (pode revelar infos sensíveis, também)
+            //})
+
+            //Tratativa de erro com async await
+            try{
+                const resp = await fetch(form.action, options)
+                const json = await resp.json()
+                resultado.innerHTML = JSON.stringify(json)
+            } catch(e){
+                resultado.innerHTML = e
+            }
+        }
+
+
+        //Explicação sobre FormData e URLSearchParams
+        /*
+        Vamos começar com um pequeno trecho de código:
+
+        <body>
+            <form action="/usuarios">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" placeholder="Nome">
+                <label for="nome">Nome</label>
+                <input type="text" name="email" placeholder="Email">
+                <button type="submit">Enviar</button>
+            </form>
+        </body>
+
+        Basicamente esse código cria apenas um formulário com dois campos(nome e email) e um botão de submit. 
+        Quando preenchemos os campos e clicamos no botão Enviar nós invocamos a url que passamos na action sendo que tem algo mais, vamos ver:
+        Dados preenchidos:
+        nome: Fulano
+        email: fulano@gmail.com 
+
+        A url produzida quando clicamos em enviar:
+        file:///usuarios?nome=fulano&email=fulano%40gmail.com
+        
+        Tudo o que vem depois da interrogação trata-se de uma Query String! Uma Query String é uma forma de passar dados através de uma url
+         e em alguns casos essa query(do jeito que ela está sendo apresenta) é utilizada para realizar consultas no backend.
+        Vocês devem estar se perguntando, e pq simplesmente vcs não passam a query string para o backend? Pois lá teríamos que tratar a query string e 
+        extrair os dados com o auxílio de expressões regulares, manipulação de strings ou outros libs. Para nossa sorte e para a sorte de vários outros 
+        desenvolvedores foi criada a classe URLSearchParams e a classe FormData.
+        Ambas trabalham para realizar um parse(traduzir) a Query String que o form gera e entregar para o backend os dados em um formato de chave e valor.
+         Dessa maneira não precisamos tratar isso no servidor com expressões regulares ou as outras bibliotecas.
+        */
+
+    </script>
+</body>

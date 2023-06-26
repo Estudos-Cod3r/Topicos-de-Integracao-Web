@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #03</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+<!-- Lembrando que o atributo name é muito importante no form -->
+<body class="conteudo exercicio">
+    <h1>Formulário</h1>         <!--Lembrando que é:       /search?q=ValorBusca&hl=LinguagemDeBusca -->
+    <form name="pesquisa" action="http://www.google.com.br/search">
+        <input type="text" name="q" placeholder="Digite o termo..."> <!--O termo a ser pesquisado 'q' - vem de query(consulta)-->>
+        <select name="hl"> <!--hl é Host Local, ele quem escolhe a linguagem de procura google-->
+            <option value="pt-br">Português (Brasil)</option> <!--Os termos hl-->
+            <option value="en-us">Inglês (Americano)</option>
+        </select>
+        <button>Pesquisar</button>
+    </form>
+    <script>
+        // É fácil selecionar elementos que tem name
+
+        const printar = e => console.log(e)
+
+        printar(document.forms) //coleção
+        printar(document.forms[0]) //primeiro índice da coleção
+        
+        //Lembrando que um desses trás nodeList e o outro htmlCollection - formatos diferentes
+        printar(document.getElementsByName('pesquisa'))
+        printar (document.getElementsByTagName('form'))
+
+        //Aqui ele toma o name como parâmetro do elemento e já devolverá o elemento com este noma
+        printar(document.pesquisa)
+        printar(document.pesquisa.q) //Input dentro de pesquisa com nome q
+        
+        //Possível alterar diretamente os valores dos elementos dessa forma, como esperado
+        document.pesquisa.q.value = 'Linux' //Usar a keyword value
+        document.pesquisa.hl.value = 'en-us' //alterando o select inicial/selecionado - o value dele, e não o label
+
+        printar(document.pesquisa.hl.selectedIndex) //Index do select
+
+
+    </script>
+</body>
+
+</html>

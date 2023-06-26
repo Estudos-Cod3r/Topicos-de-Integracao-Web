@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Fetch API #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        // Forma mais moderna de fazer requisições ajax sem o uso de frameworks - é próprio do browser (sem necessidade de importar axios)
+        // Abstração maior - uso mais fácil -- bastante compatível
+        //"Um substituto moderno ao XMLHTTPRequest"
+
+        //O fetch retorna uma promise
+        const url = 'dados/estados.json'
+        fetch(url)
+            .then(resp => resp.json()) 
+            .then(estados => {
+                const itens = estados.reduce(
+                    (html,estado) => html + `<li>${estado.nome}</li>`, ''
+                )
+                document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)
+            })
+
+    </script>
+</body>
