@@ -24,7 +24,76 @@
         <a href wm-link="linguagens.html" wm-destino=".pagina">Linguagens</a>
     </nav>
     <div class="pagina"></div>
+
     <script>
-        // ...
+        // Iremos carregar dinamicamente HTML em uma página, seguindo os princípios de SPA (Single Page Application), mas ainda sendo simples
+        //A propriedade wm-link nos dirá qual a página a ser carregada
+        //Já a wm-destino dirá um seletor que indicará qual a tag/div de destino onde iremos armazenar o conteúdo a partir da requisição
+        //da página.
+        //As páginas html não tem body nem cabeçalho, somente o conteúdo a ser "jogado" nesta div de destino (a div "pagina")
+
+                            //wm-link,wm-destino
+        //function navegarViaAjax(url,seletor) {
+        //    //Se não tiver url ou seletor, não fazer a função
+        //    if(!url || !seletor) return
+            
+        //    const elemento = document.querySelector(seletor) // Pega o elemento com seletor página ou afim
+            
+        //    //Pegamos o conteúdo do html e o colocamos no elemento
+        //    fetch(url)
+        //        .then(resp=>resp.text()) //pegando os dados html
+        //        .then(html => {
+        //            elemento.innerHTML = html
+        //        })
+        //}
+
+        
+        //(lembrando que SPA acabamos perdendo o histórico de requisições e afins, já que permanecemos na mesma página) - mas há como mudarmos isso
+        //nessa função
+        //Quando clicarmos em "voltar" no navegador, utilizaremos essa mesma função de novo, mas não queremos inserir no histórico essa volta, por tal
+        //indicaremos se queremos ou não o push
+                            //wm-link,wm-destino, inserir no histórico ou não
+        function navegarViaAjax(url,seletor, push = true) {
+            //Se não tiver url ou seletor, não fazer a função
+            if(!url || !seletor) return
+            
+            const elemento = document.querySelector(seletor) // Pega o elemento com seletor página ou afim
+            
+            //Pegamos o conteúdo do html e o colocamos no elemento
+            fetch(url)
+                .then(resp=>resp.text()) //pegando os dados html
+                .then(html => {
+                    elemento.innerHTML = html
+                    if(push){
+                        //pushState primeiro passa o estado(obj),aí título da página e por fim url
+                        history.pushState({ seletor }, null, url) //O título é uma string, caso vá passar algo
+                        //Agora as alterações ficam no histórico do browser
+                    }
+                })
+        }
+
+        //Fazendo para cada elemento
+        document.querySelectorAll('[wm-link]').forEach(link =>{
+                const url = link.attributes['wm-link'].value //pega o valor deste atributo (series.html ou linguagens.html)
+                const seletorDestino = link.attributes['wm-destino'].value //pega o seletor de destino do atributo desse elemento
+                //Os dados ficarão salvos nessas constantes até que algum dos links sejam clicados
+
+                link.onclick = e =>{
+                    e.preventDefault()
+                    navegarViaAjax(url, seletorDestino)
+                }
+
+            })
+
+            //Função pop da pilha de estados
+            window.onpopstate = e =>{
+                if(e.state) { //se e.state estiver presente
+                                //O que acabou de ser adicionado no histórico, seletor do pop, 
+                    navegarViaAjax(window.location.href, e.state.seletor,false)
+                }
+            }
+
+            //Agora, mesmo na mesma página, controlamos o histórico de navegação e mudança de url
+
     </script>
 </body>
