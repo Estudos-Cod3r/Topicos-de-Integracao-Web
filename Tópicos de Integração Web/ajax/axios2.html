@@ -29,6 +29,9 @@
             }
         }).then(resp => exibirResultado('get', resp.data))
 
+        //axios('parOuImpar?numero=7').then(resp => exibirResultado('get',resp.data)) //também é possível passar dessa forma, com uma query
+        //não é necessário informar que o tipo da operação é GET, visto que o padrão é get
+
                     //op
         axios.post('formulario',{ //obj
             nome:'AAAAna',
