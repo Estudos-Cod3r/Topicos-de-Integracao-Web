@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Entendendo jQuery</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src="js/jquery.js"></script>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Entendendo jQuery</h1>
+    <div>1</div>
+    <div>2</div>
+
+    <script>
+        //Lembrete: jQuery é pensado para trabalhar com conjunto de objetos
+
+        // A chamada do jquery pode ser feita com o $(mais comum) ou com jQuery, sendo $. para funções utilitárias 
+        //ou com $(params) para chama-lo como função, sendo possível passar funções anônimas, seletores e outros, dos mais diversos
+        //$(function (){}) - com função anônima
+        $('div') //Seletor - selecionará o conjunto de objetos div
+            .hide(5000) //função própria para esconder o elemento depois de x microssegundos
+            .show(5000) //para aparecer
+            .fadeOut(5000)
+            .fadeIn(5000)
+        //Ele faz um primeiro e depois chama a outra 
+
+        //Get(índice) nos devolve de fato o elemento DOM que está associado ao seletor
+        console.log($('div').get(0))
+
+        //Os elementos retornados por $('div') não são os elementos puros da DOM (isso somente o é com get(n)),
+        //visto que estes não tem as funções aplicadas pelo jquery - no caso, embora pudessemos estender o objeto,por meio de heranças,
+        // com novas funcionalidades,o jQuery não usa o padrão de POO para tal - ao menos não o convencional -, mas sim o padrão Decorator, em que
+        //você adiciona novas adiciona novas funcionalidades (extensões) ao objeto sem usar herança - ex:
+        //pegar um determinado obj (como um nó, da DOM) e criar um objeto (como do tipo wrapper) que tenha o anterior dentro dele, e este wrapper
+        //tem então várias funcionalidades que operam em cima do nó da DOM
+        //$('div').show(n) funciona, .get(0).show(n) não
+        //As funções do jQuery também sempre retornam o mesmo obj (wrapper) para que seja feito o encadeamento
+
+        //Exemplos de função utilitária
+        console.log($.isEmptyObject({}))
+        console.log($.isEmptyObject({nome:null}))
+        console.log(jQuery.inArray(3,[1,2,3])) //tem o número X no Array - retorna o índice
+
+        //Lembrete: Também é muito fácil de criar plugins e estender as funcionalidades do jQuery
+        $.fn.fundoVerde = function() {
+            this.css('background-color','green') //propriedade e valor da mesma a ser passado
+            //this no caso é o seletor a ser interagido (meio que)
+
+            //Implementar outras funcionalidades do jQuery com encadeamento
+            return this //retorna o próprio objeto selecionado
+        }
+        $('body').fundoVerde() //this é body
+            //.hide(1000) //Não funcionaria, pois o fundoVerde NÃO sabe o que é hide
+            //.fadeOut(1000) //após implementar o retorno do obj, é possível encadear com jQuery
+            //.fadeIn(1000)
+
+    </script>
+</body>

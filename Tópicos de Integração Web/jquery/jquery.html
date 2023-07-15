@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>O que é jQuery?</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <style>
+        p {
+            font-size: 2em;
+        }
+        
+        li {
+            font-size: 1.5rem;
+        }
+        
+        .destaque {
+            font-size: 1.5em;
+            font-weight: 900;
+        }
+
+        div{
+            padding: 0 20em;
+        }
+
+
+        /*O jQuery pode ser baixado em seu site na versão para produção(minificado) ou para desenvolvimento (usado nesse estudo)
+            ou a partir de npm innit -y / npm i --save jquery
+            ou com jquery cdn e ter uma importação direta no arquivo, sem download, com tag script 
+            */
+
+    </style>
+</head>
+
+<body class="conteudo">
+    <p>jQuery</p>
+    <div>
+    <ul>
+        <li>JQuery -> Javascript Query -> Consulta Javascript</li>
+        <li>É uma <span class="destaque">biblioteca</span> JavaScript extremamente popular</li>
+        <li>Ajuda na <span class="destaque">busca de elementos</span> e alteração da DOM</li>
+        <li>Trabalha com manipulação de eventos, animações, Ajax...</li>
+        
+        <li>Pensado para trabalhar com conjunto de elementos</li>
+        <!--É possível manipular um conjunto de elementos com um único comando, enquanto a API padrão (com query selector/all)
+         retorna uma coleção em que é necessário interar pela mesma, em cada um deles-->
+
+        <li>Usa seletores CSS</li>
+
+        <li>Encadeamento de chamadas (<i>chaining</i>)</li>
+        <!--Fazer várias chamadas numa única linha de código-->
+
+        <li>É de fácil extensão usando plugins</li>
+
+        <li>Suporte múltiplos Browsers</li>
+        <!--Inclusive pode auxilar com problemas de compatibilidade entre Browsers-->
+
+        <!--A esturutração html dessa lista abaixo ficou horrível, mas como notas funciona-->
+        <li>Só tem pontos positivos? <span class="destaque">Não!</span> 
+            <ul><li>A direção atual com frameworks e afins é a de criar componentes reutilizavéis,
+             (que se liga a POO) o que não necessariamente é o caminho do Jquery (mais procedural)
+                <ul><li>
+                    O jQuery altera diretamente a DOM com várias funções utilitárias/plugins para auxiliar no mesmo
+                </li>
+                <li>
+                    Alguns benefícios de performance que temos com os frameworks não existem com o jQuery
+                </li>
+                <li>
+                    O mesmo tem seus usos e auxílios, mas não é ""sustentável"" para uma aplicação do zero coms os métodos atuais (isso pensando em sistemas grandes, principalmente)
+                </li>
+                <li>
+                    Ainda tem bastante uso, principalmente com templates e com o próprio Bootstrap, que usa o jQuery
+                </li>
+                </ul>
+            </li></ul>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>
