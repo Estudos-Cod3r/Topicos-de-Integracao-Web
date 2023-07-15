@@ -49,6 +49,41 @@
     </form>
 
     <script>
-        // ...
+        //No jQuery nós temos os seletores, em que usamos os seletores do CSS, e também temos os chamados filtros: uma forma mais "refinada"
+        //para que consigamos selecionar algumas coisas, que não existe por padrão - se assemelha bastante ao seletor de pseudo classes na escrito, devido aos ":"
+
+        //Lembrete: prezar pela simplicidade, usar ids (mais performáticos), classes ou atributos - evitar buscas específicas por cada um (como nth child of class tralala)
+
+        //Como add e del css dum elemento, com diferentes seletores
+        $('#feira') //pegando a partir do id
+            .addClass('destaque')
+            .removeClass('destaque')
+
+        $('li').addClass('destaque')
+        $('[wm-obrigatorio]').removeClass('destaque')
+
+        //O elementl li que tenha a classe .opcional
+        $('li.opcional').removeClass('destaque')
+
+        //Selecionar uma div que tenha uma tag p e, dentro dele, uma tag span - não precisa ser descendentes diretos (div > p)
+        $('div p span').addClass('destaque')
+
+        //Filtros próprios do jQuery, não presentes na api padrão(do js)
+        //O primeiro elemento que é do tipo li
+        $('li:first').css('border','solid 3px yellow') //Arroz
+
+        //Elementos ímpares
+        $('li:odd').css('border', 'solid 10px orange')
+
+        //Greater than - maior que determinado índice
+        $('li:gt(1)').css('border', 'solid 10px white')
+
+        //li que não seja o último
+        $('li:not(:last)').css('background-color','green')
+
+        //se o li contém alguma letra ou palavra
+        $('li:contains("r")').css('background-color','black')
+
+
     </script>
 </body>
